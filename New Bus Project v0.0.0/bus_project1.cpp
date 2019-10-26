@@ -1,10 +1,9 @@
-/*  SPRPTA Bus Ticket Reservation System
-    C++ Software Development Project        */
+#include <bits/stdc++.h>
 #include <iostream>
 #include <fstream>
 #include <cstdio>
-// #include <conio.h>
-#include <curses.h>
+//#include <conio.h>
+//#include <curses.h>
 #include <cstdlib>
 #include <stdio.h>
 using namespace std;
