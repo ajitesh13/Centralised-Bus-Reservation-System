@@ -278,7 +278,7 @@ inline void Reservations ::Deletes()
 // Reservations - Show
 inline void Reservations ::Show(string NIC, string Dept_St, string Arrival_St, int No_Tickets, int Charge, int total)
 {
-    system("CLS");
+    //system("CLS");
     cout << "\n\nNIC :" << NIC << "\n"
          << "\n\nDep. St. :" << Dept_St << "\t\t"
          << "Arrival St. :" << Arrival_St << "\n\n"
