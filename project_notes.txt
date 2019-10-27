@@ -1,0 +1,10 @@
+ofstream:  This data type represents the output file stream and 
+           is used to create files and to write information to files.
+
+ifstream: This data type represents the input file stream and is 
+            used to read information from files.
+
+fstream: This data type represents the file stream generally, and 
+        has the capabilities of both ofstream and ifstream which means 
+        it can create files, write information to files, and read information 
+        from files.
