@@ -2,24 +2,14 @@
 #include "iostream"
 #include "fstream"
 #include "cstdio"
-#include "timetables.h"
-#include "payments.h"
-#include "passenger.h"
-#include "seats.h"
-//#include <conio.h>
-//#include <curses.h>
-#include <cstdlib>
-#include <stdio.h>
+// #include "timetables.h"
+// #include "payments.h"
+//#include "passenger.h"
+//#include "seats.h"
+#include "reservations.h"
 using namespace std;
 //int count01 ;
-// Passenger deconstructor
-inline Passenger :: ~Passenger(){}
-inline TimeTables :: ~TimeTables(){}
-inline Payments :: ~Payments(){}
-// Reservations constructor
-inline Reservations :: Reservations(){}
-/*************************************************************************************************************************************/
- int main()
+int main()
 {
     int mainchoice, subChoiceOne , nt ;
     string name, NIC,  City, Password,  UserName, ContactNumber, DepSt, ArrSt;

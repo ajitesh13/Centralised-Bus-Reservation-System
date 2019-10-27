@@ -1,5 +1,7 @@
 #include "bits/stdc++.h"
+//#include "reservations.h"
 using namespace std;
+int count01;
 
 // class Passenger
 class Passenger
@@ -17,9 +19,26 @@ public:
     void Deletes();
     ~Passenger();
 };
+inline Passenger :: ~Passenger(){}
+
+// Passenger constructor
+inline Passenger ::Passenger(string name, string NIC, string City, string ContactNumber, string Username, string Password)
+{
+    str_name = name;
+    str_NIC = NIC;
+    str_City = City;
+    str_ContactNumber = ContactNumber;
+    str_UserName = Username;
+    str_Password = Password;
+    fstream registration;
+    registration.open("Passenger.txt", ios::app | ios::out | ios::ate);
+    registration << str_NIC << "\t" << str_name << "\t" << str_City << "\t" << str_ContactNumber << "\t" << str_UserName
+                 << "\t" << str_Password << "\n";
+    registration.close();
+}
 
 // Delete record function
-inline void Passenger ::Deletes()
+inline void Passenger::Deletes()
 {
     string nic, name, city, username, password, cn;
     cout << "\n\nEnter your NIC to delete the record :\n\n";
@@ -134,18 +153,3 @@ inline void Passenger ::Login()
     } //end of while
 }
 
-// Passenger constructor
-inline Passenger ::Passenger(string name, string NIC, string City, string ContactNumber, string Username, string Password)
-{
-    str_name = name;
-    str_NIC = NIC;
-    str_City = City;
-    str_ContactNumber = ContactNumber;
-    str_UserName = Username;
-    str_Password = Password;
-    fstream registration;
-    registration.open("Passenger.txt", ios::app | ios::out | ios::ate);
-    registration << str_NIC << "\t" << str_name << "\t" << str_City << "\t" << str_ContactNumber << "\t" << str_UserName
-                 << "\t" << str_Password << "\n";
-    registration.close();
-}
