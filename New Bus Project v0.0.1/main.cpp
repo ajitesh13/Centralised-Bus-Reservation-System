@@ -3,6 +3,7 @@
 #include "fstream"
 #include "cstdio"
 #include "reservations.h"
+#include "string.h"
 using namespace std;
 //int count01 ;
 int main()
@@ -41,11 +42,12 @@ int main()
                  << "\n\n1.Register\n\n"
                  << "2.Modify\n\n"
                  << "3.Remove Account\n\n"
+                 << "4.Go Back to Main Menu\n\n"
                  << "\n\nEnter your choice :";
             try
             {
                 cin >> subChoiceOne;
-                if ((subChoiceOne != 1) & (subChoiceOne != 2) & (subChoiceOne != 3))
+                if ((subChoiceOne != 1) & (subChoiceOne != 2) & (subChoiceOne != 3) & (subChoiceOne != 4))
                 {
                     throw 12;
                 }
@@ -63,7 +65,7 @@ int main()
                 //system("CLS");
                 cout << "-------------------------------------------------\n\n"
                      << "Please fill in this information for the Registration";
-                cout << "\n\nPassenger Name:\n\n ";
+                cout << "\n\nPassenger Name:\n\n";
                 cin >> name;
                 cout << "\n\nPassenger NIC:\n\n ";
                 cin >> NIC;
@@ -108,6 +110,9 @@ int main()
                 system("CLS");
             };
             break;
+            case 4:
+              goto mainMenu;
+              break;
             } //sub switch one
         };    //main choice first case
         break;
