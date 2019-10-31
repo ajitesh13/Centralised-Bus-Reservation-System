@@ -66,7 +66,7 @@ int main()
                 cout << "-------------------------------------------------\n\n"
                      << "Please fill in this information for the Registration";
                 cout << "\n\nPassenger Name:\n\n";
-                cin >> name;
+                getline(cin>>ws,name);
                 cout << "\n\nPassenger NIC:\n\n ";
                 cin >> NIC;
                 cout << "\n\nPassenger City:\n\n ";
