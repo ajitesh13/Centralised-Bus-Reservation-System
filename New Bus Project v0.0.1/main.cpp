@@ -135,7 +135,7 @@ int main()
                 R2.Login();
                 char check;
                 //system("CLS");
-                cout << "\n\nCheck seat availabilty(Y/N) ?\n";
+                cout << "\n\nCheck seat availabilty(Y/N) ?\n"; // ***getting error here***
                 cin >> check;
                 check = tolower(check);
                 if (check == 'y')
