@@ -105,9 +105,9 @@ int main()
                 P3.Login();
                 P3.Deletes();
                 cout << "Press any key to move to the sub Menu.\n\n";
-                system("PAUSE");
+                //system("PAUSE");
                 goto subMenu;
-                system("CLS");
+                //system("CLS");
             };
             break;
             case 4:
