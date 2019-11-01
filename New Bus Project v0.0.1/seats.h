@@ -17,13 +17,13 @@ inline void Seats ::CheckSeatAvailabilty()
 {
     int NoLines = 0;
     string line;
-    ifstream SeatAvailbility;
-    SeatAvailbility.open("Seats.txt");
-    while (SeatAvailbility.eof())
-    {
-        getline(SeatAvailbility, line);
-        NoLines++;
-    }
+    fstream SeatAvailbility;
+    SeatAvailbility.open("Seats.txt", ios::in | ios ::out);
+    // while (SeatAvailbility.eof())
+    // {
+    //     getline(SeatAvailbility, line);
+    //     NoLines++;
+    // }
     i_SeatNo = NoLines;
     if (i_SeatNo == 32)
     {

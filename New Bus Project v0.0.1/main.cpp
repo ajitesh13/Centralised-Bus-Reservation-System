@@ -137,7 +137,9 @@ int main()
                 //system("CLS");
                 cout << "\n\nCheck seat availabilty(Y/N) ?\n"; // ***getting error here***
                 cin >> check;
-                check = tolower(check);
+                //check = tolower(check);
+                //cout << check;
+                //exit(1);
                 if (check == 'y')
                 {
                     TimeTables T1;
