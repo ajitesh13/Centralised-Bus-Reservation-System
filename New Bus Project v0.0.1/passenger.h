@@ -71,8 +71,8 @@ inline void Passenger::Deletes()
     {
         remove("Passenger.txt");
         rename("temp2.txt", "Passenger.txt");
+        cout<<"Deleted account successfully!!\n";
     }
-    cout << "\n\nDone!\n\n";
 } //end of function DeleteRecord
 
 // Search file and update
@@ -125,8 +125,8 @@ inline void Passenger ::SearchFile_and_Update()
     {
         remove("Passenger.txt");
         rename("temp1.txt", "Passenger.txt");
+        cout<<"MODIFIED SUCCESSFULLY!!\n";
     }
-    cout << "\n\nDone!\n\n";
 }
 
 // Login
@@ -147,9 +147,9 @@ inline void Passenger ::Login()
     {
         if (s5 == username01 && s6 == password01)
         {
-            cout << "\n\nLogged in Successfully.\n\n";
+            cout << "\n\nLogged in Successfully!!\n\n";
         }
         ///////
-    } //end of while
+    }matchup.close(); //end of while
 }
 
