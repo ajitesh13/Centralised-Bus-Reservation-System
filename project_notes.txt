@@ -8,3 +8,7 @@ fstream: This data type represents the file stream generally, and
         has the capabilities of both ofstream and ifstream which means 
         it can create files, write information to files, and read information 
         from files.
+Default Open Modes :
+	ifstream ios::in
+	ofstream ios::out
+	fstream ios::in | ios::out

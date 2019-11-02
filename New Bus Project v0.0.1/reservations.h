@@ -42,11 +42,17 @@ inline void Payments ::Show() const
     payments.open("Payments.txt", ios::in);
     string line;
     cout << "\n\n-----------------Payment Scheme------------------\n\n";
+    if (! payments.is_open())
+    {
+        cerr << "Unable to open timetable" << endl;
+        exit (1);
+    }
     while (!payments.eof())
     {
         getline(payments, line);
         cout << line << "\n";
     }
+    payments.close();
 }
 inline Payments :: ~Payments(){}
 
@@ -65,7 +71,12 @@ inline void TimeTables ::Show() const
     string line2;
     ifstream timetable("Timetables.txt");
     cout << "\n\n----------------TimeTable-------------------------\n\n";
-    while (!timetable.eof())
+    if (! timetable.is_open())
+    {
+        cerr << "Unable to open timetable" << endl;
+        exit (1);
+    }
+    while (! timetable.eof())
     {
         getline(timetable, line2);
         cout << line2 << "\n\n";
