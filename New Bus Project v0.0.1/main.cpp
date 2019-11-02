@@ -141,17 +141,18 @@ int main()
                 char check;
                 //system("CLS");
                 cout << "\n\nCheck seat availabilty(Y/N) ?\n"; // ***getting error here***
-                cin >> check;
+                cin>> check;
+                cin.ignore();
                 check = tolower(check);
                 cout << check;
                 //exit(0);
                 if (check == 'y')
                 {
                     TimeTables T1;
-                    Payments P1;
+                    Payments Pa1;
                     R2.CheckSeatAvailabilty();
                     T1.Show();
-                    P1.Show();
+                    Pa1.Show();
                     cout << "\n\n Passenger NIC:\n\n ";
                     cin >> NIC;
                     cout << "\n\n Depature station\n\n ";
