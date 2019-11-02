@@ -144,7 +144,7 @@ int main()
                 cin>> check;
                 cin.ignore();
                 check = tolower(check);
-                cout << check;
+                //cout << check;
                 //exit(0);
                 if (check == 'y')
                 {
