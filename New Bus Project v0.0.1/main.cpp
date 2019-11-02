@@ -4,6 +4,9 @@
 #include "cstdio"
 #include "reservations.h"
 #include "string.h"
+#define UNDERLINE "\033[4m"
+
+#define CLOSEUNDERLINE "\033[0m"
 using namespace std;
 //int count01 ;
 int main()
@@ -13,8 +16,9 @@ int main()
     try
     {
     mainMenu:
-        //system("COLOR 70");
-        cout << "\n\n Welcome to Indian Roadways(Dept. of Bus & Public Transport) \n\n";
+        //system("COLOR 6E");
+
+        cout<<"\n\n" <<UNDERLINE<< "Welcome to Indian Roadways(Dept. of Bus & Public Transport)"<<CLOSEUNDERLINE<<"\n\n";
         cout << "\n\n  1.Customer\n\n"
              << "  2.Reservation\n\n"
              << "  3.Exit\n\n"
@@ -63,8 +67,9 @@ int main()
             case 1:
             {
                 //system("CLS");
-                cout << "-------------------------------------------------\n\n"
-                     << "Please fill in this information for the Registration";
+                cout << "-------------------------------------------------------------\n\n";
+                cout<<UNDERLINE<<"REGISTER HERE!!"<<CLOSEUNDERLINE<<"\n\n";
+                cout<< "Please fill in this information for the Registration";
                 cout << "\n\nPassenger Name:\n\n";
                 getline(cin>>ws,name);
                 cout << "\n\nPassenger NIC:\n\n ";
@@ -79,9 +84,9 @@ int main()
                 cin >> Password;
                 //make the password protective
                 Passenger P1(name, NIC, City, ContactNumber, UserName, Password);
-                cout << "\n\nPress any key to move to the sub Menu.\n\n";
+                //cout << "\n\nPress any key to move to the sub Menu.\n\n";
                 system("PAUSE");
-                system("CLS");
+                //system("CLS");
                 goto subMenu;
                 system("CLS");
             }; // Sub  choice first case
@@ -105,7 +110,7 @@ int main()
                 P3.Login();
                 P3.Deletes();
                 cout << "Press any key to move to the sub Menu.\n\n";
-                //system("PAUSE");
+                system("PAUSE");
                 goto subMenu;
                 //system("CLS");
             };
@@ -137,9 +142,9 @@ int main()
                 //system("CLS");
                 cout << "\n\nCheck seat availabilty(Y/N) ?\n"; // ***getting error here***
                 cin >> check;
-                //check = tolower(check);
-                //cout << check;
-                //exit(1);
+                check = tolower(check);
+                cout << check;
+                //exit(0);
                 if (check == 'y')
                 {
                     TimeTables T1;
@@ -157,7 +162,10 @@ int main()
                     cin >> nt;
                     Reservations R2(NIC, DepSt, ArrSt, nt);
                 }
-                goto mainMenu;
+                else{
+                    system("PAUSE");
+                    goto mainMenu;
+                }
             };
             break;
             case 2:
@@ -198,7 +206,7 @@ int main()
     }
     catch (...)
     {
-        perror("\n\nUnexpected Error occoured, Program is terminating\n\n");
+        perror("\n\nUnexpected Error occoured, Program is terminating!!\n\n");
         exit(0);
     }
     return 0;
