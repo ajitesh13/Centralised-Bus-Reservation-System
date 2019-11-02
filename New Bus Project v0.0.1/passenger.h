@@ -133,9 +133,9 @@ inline void Passenger ::SearchFile_and_Update()
 inline void Passenger ::Login()
 {
     string username01, password01;
-    cout << "-------------------------------------------"
-         << "\n\nLogin Screen\n\n"
-         << "\n\nEnter your UserName:\n\n";
+    cout << "==============================================================================="
+         << "\n\n\t\t\t\tLogin Screen\n\n"
+         << "Enter your UserName:\n\n";
     cin >> username01;
     cout << "\n\nEnter your Password:\n\n";
     //system("COLOR 6E") ;
@@ -145,11 +145,10 @@ inline void Passenger ::Login()
     string s1, s2, s3, s4, s5, s6;
     while (matchup >> s1 >> s2 >> s3 >> s4 >> s5 >> s6)
     {
-        if (s5 == username01 && s6 == password01)
+        if (username01==s5 && password01==s6)
         {
             cout << "\n\nLogged in Successfully!!\n\n";
         }
-        ///////
     }matchup.close(); //end of while
 }
 
