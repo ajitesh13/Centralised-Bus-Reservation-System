@@ -143,7 +143,7 @@ int main()
                 cout << "\n\nCheck seat availabilty(Y/N) ?\n"; // ***getting error here***
                 cin >> check;
                 check = tolower(check);
-                cout << check;
+                //cout << check;
                 //exit(0);
                 if (check == 'y')
                 {
