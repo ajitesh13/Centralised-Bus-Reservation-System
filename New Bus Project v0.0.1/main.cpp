@@ -19,10 +19,10 @@ int main()
         //system("COLOR 6E");
 
         cout<<"\n\n" <<UNDERLINE<< "Welcome to Indian Roadways(Dept. of Bus & Public Transport)"<<CLOSEUNDERLINE<<"\n\n";
-        cout << "\n\n  1.Customer\n\n"
-             << "  2.Reservation\n\n"
-             << "  3.Exit\n\n"
-             << "\n\n Enter your choice :";
+        cout << "\n\n\t\t\t\t1.Customer\n\n"
+             << "\t\t\t\t2.Reservation\n\n"
+             << "\t\t\t\t3.Exit\n\n"
+             << "Enter your choice :";
         try
         {
             cin >> mainchoice;
@@ -42,12 +42,12 @@ int main()
         {
         subMenu:
             //system("CLS");
-            cout << "-------------------------------------------------\n\n"
-                 << "\n\n1.Register\n\n"
-                 << "2.Modify\n\n"
-                 << "3.Remove Account\n\n"
-                 << "4.Go Back to Main Menu\n\n"
-                 << "\n\nEnter your choice :";
+            cout << "============================================================================================\n"
+                 << "\n\n\t\t\t\t1.Register\n\n"
+                 << "\t\t\t\t2.Modify\n\n"
+                 << "\t\t\t\t3.Remove Account\n\n"
+                 << "\t\t\t\t4.Go Back to Main Menu\n\n"
+                 << "Enter your choice :";
             try
             {
                 cin >> subChoiceOne;
@@ -67,9 +67,9 @@ int main()
             case 1:
             {
                 //system("CLS");
-                cout << "-------------------------------------------------------------\n\n";
-                cout<<UNDERLINE<<"REGISTER HERE!!"<<CLOSEUNDERLINE<<"\n\n";
-                cout<< "Please fill in this information for the Registration";
+                cout << "========================================================================================\n";
+                cout<<"\t\t\t"<<UNDERLINE<<"REGISTER HERE!!"<<CLOSEUNDERLINE<<"\n";
+                cout<< "\t(Please fill in this information for the Registration)";
                 cout << "\n\nPassenger Name:\n\n";
                 getline(cin>>ws,name);
                 cout << "\n\nPassenger NIC:\n\n ";
@@ -125,10 +125,11 @@ int main()
         {
             //system("CLS");
             int subChoice2;
-            cout << "-------------------------------------------------\n\n"
-                 << "\n\n1.Make a Reservation\n\n"
-                 << "2.Modify Reservation\n\n"
-                 << "3.Cancel Reservation\n\n"
+            cout << "================================================================================"
+                 << "\n\n\t\t\t\t1.Make a Reservation\n\n"
+                 << "\t\t\t\t2.Modify Reservation\n\n"
+                 << "\t\t\t\t3.Cancel Reservation\n\n"
+                 <<"\t\t\t\t4.Go Back to Main Menu"
                  << "\n\nEnter your choice :";
             cin >> subChoice2;
             switch (subChoice2)
@@ -138,14 +139,12 @@ int main()
                 //system("CLS");
                 Reservations R2;
                 R2.Login();
-                char check;
+                char check='y';
                 //system("CLS");
-                cout << "\n\nCheck seat availabilty(Y/N) ?\n"; // ***getting error here***
+                cout << "\n\nCheck seat availabilty(Y/N) ?\n"; 
                 cin>> check;
                 cin.ignore();
-                check = tolower(check);
-                //cout << check;
-                //exit(0);
+                // check = tolower(check);
                 if (check == 'y')
                 {
                     TimeTables T1;
@@ -193,8 +192,10 @@ int main()
                 //system("CLS");
             };
             break;
-            } // second sub switch end
-            //main switch case 2 ;
+             case 4:
+              goto mainMenu;
+              break;
+             }// second sub switch end    //main switch case 2 ;
         };
         break;
         case 3:
