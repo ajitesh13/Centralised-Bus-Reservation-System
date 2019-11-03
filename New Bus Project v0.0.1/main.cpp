@@ -65,9 +65,11 @@ int main()
                 //system("CLS");
                 cout << "========================================================================================\n";
                 cout<<"\t\t\t"<<UNDERLINE<<"REGISTER HERE!!"<<CLOSEUNDERLINE<<"\n";
-                cout<< "\t(Please fill in this information for the Registration)";
+                cout<< "\t(Please fill in this information for the Registration)\n";
+                cout<<"Note: All entries in the form should be of one word and should not contain spaces.";
                 cout << "\n\nPassenger Name:\n\n";
-                getline(cin>>ws,name);
+                cin >> name;
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cout << "\n\nPassenger NIC:\n\n ";
                 cin >> NIC;
                 cout << "\n\nPassenger City:\n\n ";
@@ -76,25 +78,32 @@ int main()
                 cin >> ContactNumber;
                 cout << "\n\nPassenger : UserName \n\n ";
                 cin >> UserName;
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cout << "\n\nPassenger : Password\n\n ";
                 cin >> Password;
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 //make the password protective
                 Passenger P1(name, NIC, City, ContactNumber, UserName, Password);
                 //cout << "\n\nPress any key to move to the sub Menu.\n\n";
-                system("PAUSE");
+                //system("PAUSE");
+                //getchar();
                 //system("CLS");
                 goto subMenu;
-                system("CLS");
+                //system("CLS");
             }; // Sub  choice first case
             break;
             case 2:
             {
                 //system("CLS");
                 Passenger P2;
-                P2.Login();
-                P2.SearchFile_and_Update();
+                if(P2.Login())
+                {
+                    P2.SearchFile_and_Update();
+                }
+                    
                 cout << "Press any key to move to the sub Menu.\n\n";
-                system("PAUSE");
+                getchar();
+                //system("PAUSE");
                 goto subMenu;
                 system("CLS");
             };
@@ -103,10 +112,13 @@ int main()
             {
                 //system("CLS");
                 Passenger P3;
-                P3.Login();
+                if(!P3.Login())
+                {
+                    goto subMenu;
+                }
                 P3.Deletes();
                 cout << "Press any key to move to the sub Menu.\n\n";
-                system("PAUSE");
+                //system("PAUSE");
                 goto subMenu;
                 //system("CLS");
             };
@@ -134,7 +146,8 @@ int main()
             {
                 //system("CLS");
                 Reservations R2;
-                R2.Login();
+                if(!R2.Login())
+                    goto mainMenu;
                 char check='y';
                 //system("CLS");
                 cout << "\n\nCheck seat availabilty(Y/N) ?\n"; 
@@ -159,7 +172,7 @@ int main()
                     Reservations R2(NIC, DepSt, ArrSt, nt);
                 }
                 else{
-                    system("PAUSE");
+                    //system("PAUSE");
                     goto mainMenu;
                 }
             };
@@ -168,7 +181,8 @@ int main()
             {
                 //system("CLS");
                 Reservations R3;
-                R3.Login();
+                if(!R3.Login())
+                    goto mainMenu;
                 R3.SearchFile_and_Update();
                 cout << "Moving to Main Menu...\n\n";
                 //system("PAUSE");
@@ -180,7 +194,8 @@ int main()
             {
                 //system("CLS");
                 Reservations R4;
-                R4.Login();
+                if(!R4.Login())
+                    goto mainMenu;
                 R4.Deletes();
                 cout << "Moving to the Main Menu...\n\n";
                 //system("PAUSE");

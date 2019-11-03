@@ -1,4 +1,4 @@
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 using namespace std;
 int count01;
 
@@ -13,7 +13,7 @@ protected:
 public:
     Passenger() {}
     Passenger(string name, string NIC, string City, string ContactNumber, string Username, string Password);
-    void Login();
+    bool Login();
     void SearchFile_and_Update();
     void Deletes();
     ~Passenger();
@@ -129,25 +129,37 @@ inline void Passenger ::SearchFile_and_Update()
 }
 
 // Login
-inline void Passenger ::Login()
+inline bool Passenger ::Login()
 {
+    long long x=0; //to detect correct username and password for login
     string username01, password01;
     cout << "==============================================================================="
          << "\n\n\t\t\t\tLogin Screen\n\n"
          << "Enter your UserName:\n\n";
     cin >> username01;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout << "\n\nEnter your Password:\n\n";
     //system("COLOR 6E") ;
     cin >> password01;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
     ifstream matchup;
     matchup.open("Passenger.txt", ios::in);
     string s1, s2, s3, s4, s5, s6;
     while (matchup >> s1 >> s2 >> s3 >> s4 >> s5 >> s6)
     {
+        //cout<< s1 <<" "<< s2 <<" "<< s3 <<" "<< s4 <<" "<< s5 <<" "<< s6 <<endl;
         if (username01==s5 && password01==s6)
         {
-            cout << "\n\nLogged in Successfully!!\n\n";
+            x++;
         }
     }matchup.close(); //end of while
+    if(x>0){
+        cout << "\n\nLogged in Successfully!!\n\n";
+        return true;
+    }
+    else
+        cout<< "\n\nLog in Failed!\n\n";
+        return false;
 }
 
