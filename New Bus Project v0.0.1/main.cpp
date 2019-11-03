@@ -1,11 +1,7 @@
 #include "bits/stdc++.h"
-#include "iostream"
-#include "fstream"
-#include "cstdio"
 #include "reservations.h"
 #include "string.h"
 #define UNDERLINE "\033[4m"
-
 #define CLOSEUNDERLINE "\033[0m"
 using namespace std;
 //int count01 ;
