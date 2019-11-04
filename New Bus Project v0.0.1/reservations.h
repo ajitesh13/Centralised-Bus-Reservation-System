@@ -210,7 +210,7 @@ inline void Reservations ::SearchFile_and_Update()
     }// end of confirmation if
     if (count01 == 0)
     {
-        cout << "\n\nRecord  could not be found!\n\n";
+        cout << "\n\nRecord could not be found!\n\n";
         remove("temp7.txt");
         remove("temp8.txt");
     }
@@ -251,7 +251,7 @@ inline void Reservations ::Deletes()
         cin >> str_NIC;
         cout << "\n\n-------------------------------------------------\n\n";
         ResIn.open("Reservations.txt");
-        SeatIn.open("Seats.txt");
+        SeatIn.open("Seat.txt");
         while (ResIn >> nic >> dept >> arr >> nt >> ch >> tot)
         {
             ResOut.open("temp5.txt", ios ::app | ios ::out);
@@ -278,7 +278,7 @@ inline void Reservations ::Deletes()
     SeatOut.close();
     if (count01 == 0)
     {
-        cout << "\n\nRecord  could not be found!\n\n";
+        cout << "\n\nRecord  could not be found!!\n";
         remove("temp5.txt");
         remove("temp6.txt");
     }
@@ -286,11 +286,12 @@ inline void Reservations ::Deletes()
     {
         remove("Reservations.txt");
         rename("temp5.txt", "Reservations.txt");
-        remove("Seats.txt");
-        rename("temp6.txt", "Seats.txt");
+        remove("Seat.txt");
+        rename("temp6.txt", "Seat.txt");
+        cout << "\n\nDone!!\n\n";
     }
     ResIn.close();
-    cout << "\n\nDone!\n\n";
+  
 }
 
 // Reservations - Show

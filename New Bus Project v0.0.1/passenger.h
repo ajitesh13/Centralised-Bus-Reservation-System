@@ -37,7 +37,7 @@ inline Passenger ::Passenger(string name, string NIC, string City, string Contac
 }
 
 // Delete record function
-inline void Passenger::Deletes()
+inline void Passenger::Deletes() /* ERROR COMING HERE*/
 {
     string nic, name, city, username, password, cn;
     cout << "\n\nEnter your NIC to delete the record :\n\n";

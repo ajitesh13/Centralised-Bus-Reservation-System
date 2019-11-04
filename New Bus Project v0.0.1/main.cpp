@@ -171,10 +171,10 @@ int main()
                     cin >> DepSt;
                     cout << "\n\n Arrival station\n\n ";
                     cin >> ArrSt;
-                    // R2.CheckSeatAvailabilty();
                     cout << "\n\nNo. of Tickets\n\n ";
                     cin >> nt;
                     Reservations R2(NIC, DepSt, ArrSt, nt);
+                    R2.CheckSeatAvailabilty(DepSt, ArrSt, nt);
                 }
                 else{
                     //system("PAUSE");

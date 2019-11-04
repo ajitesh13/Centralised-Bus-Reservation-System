@@ -4,4 +4,8 @@
 123	berhampur	sambalpur	5	3500
 123	bhubaneswar	berhampur	6	1200
 456	bhubaneswar	kolkata	3	3000
-456	bhopal	bhubaneswar	3	4500
+456	delhi	bhubaneswar	6	15000
+456	sambalpur	berhampur	2	1400
+456	delhi	bhubaneswar	3	7500
+456	bhubaneswar	mumbai	3	7500
+456	jaipur	bhubaneswar	3	3000
