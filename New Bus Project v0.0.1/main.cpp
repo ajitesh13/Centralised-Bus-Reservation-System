@@ -144,16 +144,19 @@ int main()
             {
                 //system("CLS");
                 Reservations R2;
-                if(!R2.Login())
+                if(!R2.Login()){
+                    cout<<"Try Again!!"<<endl;
+                    system("PAUSE");
                     goto mainMenu;
+                }
                 char check='y';
                 //system("CLS");
 
                 // cout << "\n\nCheck seat availabilty(Y/N) ?\n"; 
-                // cin>> check;
+                 //cin>> check;
                 // cin.ignore();
 
-                // check = tolower(check);
+                 //check = tolower(check);
                 if (check == 'y')
                 {
                     TimeTables T1;
@@ -183,8 +186,10 @@ int main()
             {
                 //system("CLS");
                 Reservations R3;
-                if(!R3.Login())
+                if(!R3.Login()){
+                    system("PAUSE");
                     goto mainMenu;
+                }
                 R3.SearchFile_and_Update();
                 cout << "Moving to Main Menu...\n\n";
                 //system("PAUSE");
@@ -196,8 +201,10 @@ int main()
             {
                 //system("CLS");
                 Reservations R4;
-                if(!R4.Login())
+                if(!R4.Login()){
+                    system("PAUSE");
                     goto mainMenu;
+                }
                 R4.Deletes();
                 cout << "Moving to the Main Menu...\n\n";
                 //system("PAUSE");
