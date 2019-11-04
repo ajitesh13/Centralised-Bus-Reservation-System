@@ -4,7 +4,6 @@
 #define UNDERLINE "\033[4m"
 #define CLOSEUNDERLINE "\033[0m"
 using namespace std;
-//int count01 ;
 int main()
 {
     int mainchoice, subChoiceOne, nt;
@@ -12,9 +11,7 @@ int main()
     try
     {
     mainMenu:
-        //system("COLOR 6E");
-
-        cout<<"\n\n" <<UNDERLINE<< "Welcome to Indian Roadways(Dept. of Bus & Public Transport)"<<CLOSEUNDERLINE<<"\n\n";
+        cout<<"\n\n\t" <<UNDERLINE<< "Welcome to Indian Roadways(Dept. of Bus & Public Transport)"<<CLOSEUNDERLINE<<"\n\n";
         cout << "\n\n\t\t\t\t1.Customer\n\n"
              << "\t\t\t\t2.Reservation\n\n"
              << "\t\t\t\t3.Exit\n\n"
@@ -105,7 +102,7 @@ int main()
                 getchar();
                 //system("PAUSE");
                 goto subMenu;
-                system("CLS");
+                //system("CLS");
             };
             break;
             case 3:
@@ -137,7 +134,8 @@ int main()
                  << "\n\n\t\t\t\t1.Make a Reservation\n\n"
                  << "\t\t\t\t2.Modify Reservation\n\n"
                  << "\t\t\t\t3.Cancel Reservation\n\n"
-                 <<"\t\t\t\t4.Go Back to Main Menu"
+                 << "\t\t\t\t4.Show Reservation\n\n"
+                 <<"\t\t\t\t5.Go Back to Main Menu"
                  << "\n\nEnter your choice :";
             cin >> subChoice2;
             switch (subChoice2)
@@ -150,16 +148,19 @@ int main()
                     goto mainMenu;
                 char check='y';
                 //system("CLS");
-                cout << "\n\nCheck seat availabilty(Y/N) ?\n"; 
-                cin>> check;
-                cin.ignore();
+
+                // cout << "\n\nCheck seat availabilty(Y/N) ?\n"; 
+                // cin>> check;
+                // cin.ignore();
+
                 // check = tolower(check);
                 if (check == 'y')
                 {
                     TimeTables T1;
                     Payments Pa1;
-                    R2.CheckSeatAvailabilty();
-                    T1.Show();
+                    
+                    //T1.Show();
+                    
                     Pa1.Show();
                     cout << "\n\n Passenger NIC:\n\n ";
                     cin >> NIC;
@@ -167,6 +168,7 @@ int main()
                     cin >> DepSt;
                     cout << "\n\n Arrival station\n\n ";
                     cin >> ArrSt;
+                    // R2.CheckSeatAvailabilty();
                     cout << "\n\nNo. of Tickets\n\n ";
                     cin >> nt;
                     Reservations R2(NIC, DepSt, ArrSt, nt);
@@ -203,7 +205,16 @@ int main()
                 //system("CLS");
             };
             break;
-             case 4:
+            // case 4:
+            // {
+            //     Reservations myr;
+            //     myr.Login();
+
+            //     myr.Show();
+            //     goto mainMenu;
+            // }
+            break;
+             case 5:
               goto mainMenu;
               break;
              }// second sub switch end    //main switch case 2 ;

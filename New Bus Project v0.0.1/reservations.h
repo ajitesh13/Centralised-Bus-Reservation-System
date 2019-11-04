@@ -94,14 +94,21 @@ inline Reservations ::Reservations(string NIC, string DeptSt, string ArrivalSt, 
     i_No_Tickets = NoTickets;
     ifstream PaymentsRead;
     PaymentsRead.open("Payments.txt");
-    double ch;
+    double ch,ticket;
     string s1, s2;
+    int ot=0;
     while (PaymentsRead >> s1 >> s2 >> ch)
     {
         if ((str_Dep_St == s1) & (str_Arrival_St == s2))
         {
             i_total = CalculateFee(ch, i_No_Tickets);
+            ticket=ch;
+            ot=1;
         }
+    }
+    if(ot!=1){
+        cout<<"\tSorry!No bus found on your searched route\n"<<endl;
+        exit(1);
     }
     char confirmation;
     cout << "\n\nConfirm the Reservation(Y/N): \n\n";
@@ -112,7 +119,7 @@ inline Reservations ::Reservations(string NIC, string DeptSt, string ArrivalSt, 
         fstream Reservations;
         fstream Seats;
         string line;
-        Reservations.open("Reservations.txt", ios::app | ios::out | ios::ate);
+        Reservations.open("Reservations.txt", ios ::app | ios ::out | ios ::ate | ios ::in);
         Seats.open("Seat.txt", ios ::app | ios ::out | ios ::ate | ios ::in);
         Seats << str_NIC << "\t" << i_No_Tickets << "\n";
         Reservations << str_NIC << "\t" << str_Dep_St << "\t" << str_Arrival_St << "\t" << i_No_Tickets
@@ -124,7 +131,7 @@ inline Reservations ::Reservations(string NIC, string DeptSt, string ArrivalSt, 
         cout << "\n\nConfirmation denied and exiting from the program \n";
         exit(0);
     }
-    r2.Show(str_NIC, str_Dep_St, str_Arrival_St, i_No_Tickets, ch, i_total);
+    r2.Show(str_NIC, str_Dep_St, str_Arrival_St, i_No_Tickets, ticket, i_total);
 }
 
 // modify Reservation function

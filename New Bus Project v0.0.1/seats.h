@@ -18,11 +18,11 @@ inline void Seats ::CheckSeatAvailabilty()
     string line;
     fstream SeatAvailbility;
     SeatAvailbility.open("Seats.txt", ios::in | ios ::out);
-    // while (SeatAvailbility.eof())
-    // {
-    //     getline(SeatAvailbility, line);
-    //     NoLines++;
-    // }
+     while (SeatAvailbility.eof())
+     {
+         getline(SeatAvailbility, line);
+         NoLines++;
+     }
     i_SeatNo = NoLines;
     if (i_SeatNo == 32)
     {
@@ -30,8 +30,7 @@ inline void Seats ::CheckSeatAvailabilty()
     }
     else
     {
-        cout << "\n\n"
-             << 32 - i_SeatNo << "  are available.\n\n";
+        cout << "\n\n" << 32 - i_SeatNo << "  are available.\n\n";
     }
     SeatAvailbility.close();
 } // seat availability  function end

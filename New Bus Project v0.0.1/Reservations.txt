@@ -1,5 +1,7 @@
-348	BBS	SBP	2	4.63963e-310
-123	bbs	bam	1	4.63612e-310
-123	bbs	bam	2	4.66626e-310
-123	bbs	bam	3	4.63717e-310
-1	bbs	bam	5	4.68989e-310
+123	delhi	bhubaneswar	3	7500
+000	bhubaneswar	bhopal	3	4500
+000	kolkata	bhubaneswar	2	2000
+123	berhampur	sambalpur	5	3500
+123	bhubaneswar	berhampur	6	1200
+456	bhubaneswar	kolkata	3	3000
+456	bhopal	bhubaneswar	3	4500

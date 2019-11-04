@@ -142,7 +142,6 @@ inline bool Passenger ::Login()
     //system("COLOR 6E") ;
     cin >> password01;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
     ifstream matchup;
     matchup.open("Passenger.txt", ios::in);
     string s1, s2, s3, s4, s5, s6;
@@ -158,8 +157,9 @@ inline bool Passenger ::Login()
         cout << "\n\nLogged in Successfully!!\n\n";
         return true;
     }
-    else
+    else{
         cout<< "\n\nLog in Failed!\n\n";
         return false;
+    }
 }
 
