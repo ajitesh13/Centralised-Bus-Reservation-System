@@ -1,0 +1,24 @@
+bhubaneswar sambalpur 40
+sambalpur bhubaneswar 40
+berhampur sambalpur 40
+sambalpur berhampur 40
+bhubaneswar berhampur 40
+berhampur bhubaneswar 40
+cuttack bhubaneswar 40
+bhubaneswar cuttack 40
+puri bhubaneswar 40
+bhubaneswar puri 40
+bhubaneswar kolkata 40
+kolkata bhubaneswar 40
+bhubaneswar delhi 40
+delhi bhubaneswar 40
+bhubaneswar mumbai 40
+mumbai bhubaneswar 40
+bhubaneswar chennai 40
+chennai bhubaneswar 40
+bhubaneswar bangaluru 40
+bangaluru bhubaneswar 40
+bhubaneswar jaipur 40
+jaipur bhubaneswar 40jaipur	bhubaneswar	36
+
+bhopal bhubaneswar 40

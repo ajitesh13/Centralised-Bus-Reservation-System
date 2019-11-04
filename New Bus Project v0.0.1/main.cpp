@@ -144,19 +144,16 @@ int main()
             {
                 //system("CLS");
                 Reservations R2;
-                if(!R2.Login()){
-                    cout<<"Try Again!!"<<endl;
-                    system("PAUSE");
+                if(!R2.Login())
                     goto mainMenu;
-                }
                 char check='y';
                 //system("CLS");
 
                 // cout << "\n\nCheck seat availabilty(Y/N) ?\n"; 
-                 //cin>> check;
+                // cin>> check;
                 // cin.ignore();
 
-                 //check = tolower(check);
+                // check = tolower(check);
                 if (check == 'y')
                 {
                     TimeTables T1;
@@ -171,10 +168,10 @@ int main()
                     cin >> DepSt;
                     cout << "\n\n Arrival station\n\n ";
                     cin >> ArrSt;
-                    // R2.CheckSeatAvailabilty();
                     cout << "\n\nNo. of Tickets\n\n ";
                     cin >> nt;
                     Reservations R2(NIC, DepSt, ArrSt, nt);
+                    R2.CheckSeatAvailabilty(DepSt, ArrSt, nt);
                 }
                 else{
                     //system("PAUSE");
@@ -186,10 +183,8 @@ int main()
             {
                 //system("CLS");
                 Reservations R3;
-                if(!R3.Login()){
-                    system("PAUSE");
+                if(!R3.Login())
                     goto mainMenu;
-                }
                 R3.SearchFile_and_Update();
                 cout << "Moving to Main Menu...\n\n";
                 //system("PAUSE");
@@ -201,10 +196,8 @@ int main()
             {
                 //system("CLS");
                 Reservations R4;
-                if(!R4.Login()){
-                    system("PAUSE");
+                if(!R4.Login())
                     goto mainMenu;
-                }
                 R4.Deletes();
                 cout << "Moving to the Main Menu...\n\n";
                 //system("PAUSE");
