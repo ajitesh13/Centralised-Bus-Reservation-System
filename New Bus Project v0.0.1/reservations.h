@@ -44,7 +44,7 @@ inline void Payments ::Show() const
     cout << "\n\n-----------------Payment Scheme------------------\n\n";
     if (! payments.is_open())
     {
-        cerr << "Unable to open timetable" << endl;
+        cerr << "Unable to open payment records!!" << endl;
         exit (1);
     }
     while (!payments.eof())
@@ -210,7 +210,7 @@ inline void Reservations ::SearchFile_and_Update()
     }// end of confirmation if
     if (count01 == 0)
     {
-        cout << "\n\nRecord could not be found!\n\n";
+        cout << "\n\nRecord  could not be found!\n\n";
         remove("temp7.txt");
         remove("temp8.txt");
     }
@@ -251,7 +251,7 @@ inline void Reservations ::Deletes()
         cin >> str_NIC;
         cout << "\n\n-------------------------------------------------\n\n";
         ResIn.open("Reservations.txt");
-        SeatIn.open("Seat.txt");
+        SeatIn.open("Seats.txt");
         while (ResIn >> nic >> dept >> arr >> nt >> ch >> tot)
         {
             ResOut.open("temp5.txt", ios ::app | ios ::out);
@@ -278,7 +278,7 @@ inline void Reservations ::Deletes()
     SeatOut.close();
     if (count01 == 0)
     {
-        cout << "\n\nRecord  could not be found!!\n";
+        cout << "\n\nRecord  could not be found!\n\n";
         remove("temp5.txt");
         remove("temp6.txt");
     }
@@ -286,24 +286,26 @@ inline void Reservations ::Deletes()
     {
         remove("Reservations.txt");
         rename("temp5.txt", "Reservations.txt");
-        remove("Seat.txt");
-        rename("temp6.txt", "Seat.txt");
-        cout << "\n\nDone!!\n\n";
+        remove("Seats.txt");
+        rename("temp6.txt", "Seats.txt");
     }
     ResIn.close();
-  
+    cout << "\n\nDone!\n\n";
 }
 
 // Reservations - Show
 inline void Reservations ::Show(string NIC, string Dept_St, string Arrival_St, int No_Tickets, int Charge, int total)
 {
     //system("CLS");
-    cout << "\n\nNIC :" << NIC << "\n"
-         << "\n\nDep. St. :" << Dept_St << "\t\t"
-         << "Arrival St. :" << Arrival_St << "\n\n"
-         << "No_Tickets :" << No_Tickets << "\t"
-         << "Charge for one ticket :" << Charge << "\t"
-         << "total = " << total << "\n\n";
+    cout <<"\n\n**************************************************************\n"
+         << "\tNIC :" << NIC << "\n\n"
+         << "\tDep. St. : " << Dept_St << "\n\n"
+         << "\tArrival St. : " << Arrival_St << "\n\n"
+         << "\tNo. of Tickets :" << No_Tickets << "\n\n"
+         << "\tCharge for one ticket : " << Charge << "\n\n"
+         << "--------------------------------------------------------------\n"
+         << "\t\nTotal Fare = " << total << "\n\n"
+         <<"**************************************************************\n";
 }
 
 // Reservations Deconstructor

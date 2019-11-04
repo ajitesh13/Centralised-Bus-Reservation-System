@@ -9,3 +9,9 @@
 456	delhi	bhubaneswar	3	7500
 456	bhubaneswar	mumbai	3	7500
 456	jaipur	bhubaneswar	3	3000
+567	bhubaneswar	sambalpur	3	1500
+567	bhubaneswar	jaipur	3	3000
+567	bhopal	bhubaneswar	2	3000
+567	bhubaneswar	jaipur	3	3000
+567	bhubaneswar	jaipur	3	3000
+567	bhopal	bhubaneswar	5	7500

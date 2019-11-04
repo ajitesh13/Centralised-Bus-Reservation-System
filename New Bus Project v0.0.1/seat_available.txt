@@ -1,6 +1,6 @@
 bhubaneswar sambalpur 40
-sambalpur bhubaneswar 40
-berhampur sambalpur 40
+sambalpur bhubaneswbhubaneswar	sambalpur	37
+ 40
 sambalpur berhampur 40
 bhubaneswar berhampur 40
 berhampur bhubaneswar 40
