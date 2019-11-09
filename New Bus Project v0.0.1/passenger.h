@@ -44,10 +44,10 @@ inline void Passenger::Deletes() /* ERROR COMING HERE*/
     cin >> str_NIC;
     fstream deleteF;
     ofstream df;
-    deleteF.open("Passenger.txt", ios::in | ios ::out);
+    deleteF.open("Passenger.txt", ios::in);
     while (deleteF >> nic >> name >> city >> cn >> username >> password)
     {
-        df.open("temp2.txt", ios ::ate);
+        df.open("temp2.txt", ios ::out | ios :: app);
         if (nic != str_NIC)
         {
             df << nic << "\t" << name << "\t" << city << "\t"
@@ -86,6 +86,7 @@ inline void Passenger ::SearchFile_and_Update()
     PassengerIn.open("Passenger.txt");
     while (PassengerIn >> nic >> name >> city >> cn >> username >> password)
     {
+        count01 = 0;
         writeFile.open("temp1.txt", ios ::app);
         if (nic == str_NIC)
         {
