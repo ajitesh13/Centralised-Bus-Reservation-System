@@ -29,3 +29,5 @@
 000	bhopal	bhubaneswar	3	4500
 000	bhopal	bhubaneswar	7	10500
 000	bhopal	bhubaneswar	7	10500
+000	mumbai	bhubaneswar	10	25000
+000	jaipur	bhubaneswar	30	30000

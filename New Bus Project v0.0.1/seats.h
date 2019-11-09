@@ -29,11 +29,11 @@ inline void Seats ::CheckSeatAvailabilty(string DepSt, string ArrSt, int nt)
         {
             seats = seats - nt;
 
-            // if(seats < 0)
-            // {
-            //     cout << "Sorry! No More Seats Availabe :( " << endl;
-            //     exit(1);
-            // }
+            if(seats < 0)
+            {
+                cout << "\n\n\n****SORRY! THIS RESERVATION IS NOT POSSIBLE****\n\n\n" << endl;
+                exit(1);
+            }
  
             
             seat_update << DepSt << "\t" << ArrSt << "\t" << seats << "\n";
@@ -56,18 +56,4 @@ inline void Seats ::CheckSeatAvailabilty(string DepSt, string ArrSt, int nt)
         rename("temp11.txt", "seat_available.txt");
     }
 
-    //  while (SeatAvailbility.eof())
-    //  {
-    //      getline(SeatAvailbility, line);
-    //      NoLines++;
-    //  }
-    // i_SeatNo = NoLines;
-    // if (i_SeatNo == 32)
-    // {
-    //     cout << "\n\nSeats are not available at the moment.\n\n";
-    // }
-    // else
-    // {
-    //     cout << "\n\n" << 32 - i_SeatNo << "  are available.\n\n";
-    // }
-} // seat availability  function end
+} 
