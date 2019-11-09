@@ -28,7 +28,6 @@ inline void Seats ::CheckSeatAvailabilty(string DepSt, string ArrSt, int nt)
         if ((s1 == DepSt) & (s2 == ArrSt))
         {
             seats = seats - nt;
-
             if(seats < 0)
             {
                 cout << "\n\n\n****SORRY! THIS RESERVATION IS NOT POSSIBLE****\n\n\n" << endl;

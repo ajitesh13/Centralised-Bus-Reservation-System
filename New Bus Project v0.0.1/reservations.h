@@ -235,14 +235,15 @@ inline void Reservations ::SearchFile_and_Update()
 // cancel Reservations
 inline void Reservations ::Deletes()
 {
+    int cntr5=0;
     char confirmation;
-    string nic, nic2, dept, arr, s8;
-    int nt, ch, tot, sn;
+    string nic, dept, arr;
+    int nt, tot;
     ifstream ResIn;  //reservations
-    ifstream SeatIn; //seats
-    fstream ResOut;
-    fstream SeatOut;
-    cout << "\n\nConfirm to Cancel the Reservation(Y/N): \n\n";
+    //ifstream SeatIn; //seats
+    ofstream ResOut;
+    //fstream SeatOut;
+    cout << "\n\nConfirm to Cancel The Reservations of your NIC (y/n): \n\n";
     cin >> confirmation;
     confirmation = tolower(confirmation);
     if (confirmation == 'y')
@@ -252,47 +253,34 @@ inline void Reservations ::Deletes()
         cin >> str_NIC;
         cout << "\n\n-------------------------------------------------\n\n";
         ResIn.open("Reservations.txt");
-        SeatIn.open("Seat.txt");
+        ResOut.open("temp5.txt", ios ::app);
         while (ResIn >> nic >> dept >> arr >> nt >> tot)
         {
-            ResOut.open("temp5.txt", ios ::app | ios ::out);
-            if (nic != str_NIC)
+            if (nic == str_NIC)
             {
-                while (SeatIn >> nic2 >> sn)
-                {
-                    SeatOut.open("temp6.txt", ios ::app | ios ::out);
-                    if (nic2 != str_NIC)
-                    {
-                        SeatOut << nic2 << "\t" << nt << "\n";
-                        ResOut << nic << "\t" << dept << "\t" << arr << "\t" << nt << "\t" << tot << "\n";
-                    }
-                    else
-                    {
-                        count01++;
-                    }
-                }// end of while - match4
-            }// end of outer if
-        }// end of outer while
-    }// end of confirmation if
+               
+            }
+            else{
+                 ResOut << nic << "\t" << dept << "\t" << arr << "\t" << nt << "\t" << tot << "\n";
+                cntr5++;
+            }
+        }
+    }
     ResOut.close();
-    SeatOut.close();
-    if (count01 == 0)
+    if (cntr5 == 0)
     {
         cout << "\n\nRecord  could not be found!\n\n";
         remove("temp5.txt");
-        remove("temp6.txt");
     }
-    if (count01 > 0)
+    else if (cntr5 > 0)
     {
         remove("Reservations.txt");
         rename("temp5.txt", "Reservations.txt");
-        remove("Seat.txt");
-        rename("temp6.txt", "Seat.txt");
         cout << "\n\nDone!\n\n";
     }
     ResIn.close();
-    SeatIn.close();
 }
+
 
 // Reservations - Show
 inline void Reservations ::Show(string NIC, string Dept_St, string Arrival_St, int No_Tickets, int Charge, int total)

@@ -1,5 +1,5 @@
 bhubaneswar	sambalpur	40
-sambalpur	bhubaneswar	40
+sambalpur	bhubaneswar	9
 berhampur	sambalpur	40
 sambalpur	berhampur	40
 bhubaneswar	berhampur	40
@@ -18,7 +18,7 @@ bhubaneswar	chennai	40
 chennai	bhubaneswar	40
 bhubaneswar	bangaluru	40
 bangaluru	bhubaneswar	40
-bhubaneswar	jaipur	40
+bhubaneswar	jaipur	5
 jaipur	bhubaneswar	40
 bhubaneswar	bhopal	40
 bhopal	bhubaneswar	40
