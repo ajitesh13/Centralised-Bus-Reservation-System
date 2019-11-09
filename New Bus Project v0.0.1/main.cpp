@@ -11,7 +11,7 @@ int main()
     try
     {
     mainMenu:
-        cout<<"\n\n\t" <<UNDERLINE<< "Welcome to Indian Roadways(Dept. of Bus & Public Transport)"<<CLOSEUNDERLINE<<"\n\n";
+        cout << "\n\n\t" << UNDERLINE << "Welcome to Indian Roadways(Dept. of Bus & Public Transport)" << CLOSEUNDERLINE << "\n\n";
         cout << "\n\n\t\t\t\t1.Customer\n\n"
              << "\t\t\t\t2.Reservation\n\n"
              << "\t\t\t\t3.Exit\n\n"
@@ -26,7 +26,7 @@ int main()
         }
         catch (int x)
         {
-            perror("\n\n Please select a Relevant Number from the menu \n\n");
+            cout << "\n\n Please select a Relevant Number from the menu \n\n";
             return main();
         }
         switch (mainchoice)
@@ -34,7 +34,7 @@ int main()
         case 1:
         {
         subMenu:
-            //system("CLS");
+
             cout << "============================================================================================\n"
                  << "\n\n\t\t\t\t1.Register\n\n"
                  << "\t\t\t\t2.Modify\n\n"
@@ -51,19 +51,18 @@ int main()
             }
             catch (int y)
             {
-                perror("\n\nError - Please select a Relevant Number from the menu \n\n");
-                goto mainMenu;
-                //system("CLS");
+                cout << "\n\nError - Please select a Relevant Number from the menu \n\n";
+                goto subMenu;
             }
             switch (subChoiceOne)
             {
             case 1:
             {
-                //system("CLS");
+
                 cout << "========================================================================================\n";
-                cout<<"\t\t\t"<<UNDERLINE<<"REGISTER HERE!!"<<CLOSEUNDERLINE<<"\n";
-                cout<< "\t(Please fill in this information for the Registration)\n";
-                cout<<"Note: All entries in the form should be of one word and should not contain spaces.";
+                cout << "\t\t\t" << UNDERLINE << "REGISTER HERE!!" << CLOSEUNDERLINE << "\n";
+                cout << "\t(Please fill in this information for the Registration)\n";
+                cout << "Note: All entries in the form should be of one word and should not contain spaces.";
                 cout << "\n\nPassenger Name:\n\n";
                 cin >> name;
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -81,93 +80,84 @@ int main()
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 //make the password protective
                 Passenger P1(name, NIC, City, ContactNumber, UserName, Password);
-                //cout << "\n\nPress any key to move to the sub Menu.\n\n";
-                //system("PAUSE");
-                //getchar();
-                //system("CLS");
                 goto subMenu;
-                //system("CLS");
+
             }; // Sub  choice first case
             break;
             case 2:
             {
-                //system("CLS");
+
                 Passenger P2;
-                if(P2.Login())
+                if (P2.Login())
                 {
                     P2.SearchFile_and_Update();
                 }
-                    
-                cout << "Press any key to move to the sub Menu.\n\n";
-                getchar();
-                //system("PAUSE");
                 goto subMenu;
-                //system("CLS");
             };
             break;
             case 3:
             {
-                //system("CLS");
                 Passenger P3;
-                if(!P3.Login())
+                if (!P3.Login())
                 {
                     goto subMenu;
                 }
                 P3.Deletes();
-                cout << "Press any key to move to the sub Menu.\n\n";
-                //system("PAUSE");
                 goto subMenu;
-                //system("CLS");
             };
             break;
             case 4:
-              goto mainMenu;
-              break;
+                goto mainMenu;
+                break;
             } //sub switch one
         };    //main choice first case
         break;
         case 2:
         {
-            //system("CLS");
+        subMenu2:
             int subChoice2;
             cout << "================================================================================"
                  << "\n\n\t\t\t\t1.Make a Reservation\n\n"
                  << "\t\t\t\t2.Modify Reservation\n\n"
                  << "\t\t\t\t3.Cancel Reservation\n\n"
                  << "\t\t\t\t4.Show Reservation\n\n"
-                 <<"\t\t\t\t5.Go Back to Main Menu"
+                 << "\t\t\t\t5.Go Back to Main Menu"
                  << "\n\nEnter your choice :";
-            cin >> subChoice2;
+            try
+            {
+                cin >> subChoice2;
+                if ((subChoice2 != 1) & (subChoice2 != 2) & (subChoice2 != 3) & (subChoice2 != 4) & (subChoice2 != 5))
+                {
+                    throw 13;
+                }
+            }
+            catch (int y)
+            {
+                cout << "\n\nError - Please select a Relevant Number from the menu \n\n";
+                goto subMenu2;
+            }
             switch (subChoice2)
             {
             case 1:
             {
-                //system("CLS");
                 Reservations R2;
-                if(!R2.Login()){
-                    cout<<"Try Again!!"<<endl;
-                    //system("PAUSE");
+                if (!R2.Login())
+                {
+                    cout << "Try Again!!" << endl;
                     goto mainMenu;
                 }
-                char check='y';
-                //system("CLS");
-
-                // cout << "\n\nCheck seat availabilty(Y/N) ?\n"; 
-                 //cin>> check;
-                // cin.ignore();
-
-                 //check = tolower(check);
+                char check = 'y';
                 if (check == 'y')
                 {
                     TimeTables T1;
                     Payments Pa1;
-                    
+
                     //T1.Show();
-                    cout << "\n\n Passenger NIC:\n\n ";
+                    cout << "\nPassenger NIC:\n\n";
                     cin >> NIC;
-                    
+
                     Pa1.Show();
-                    
+
                     string search1, search2;
                     cout << "\n\n Enter Your Depature station\n\n ";
                     cin >> DepSt;
@@ -175,64 +165,55 @@ int main()
                     cin >> ArrSt;
                     cout << "\n\nNo. of Tickets\n\n ";
                     cin >> nt;
-                    
+
                     Reservations R2(NIC, DepSt, ArrSt, nt);
-                    R2.CheckSeatAvailabilty(DepSt, ArrSt, nt);
-                    
-                }
-                else{
-                    //system("PAUSE");
+                    //R2.CheckSeatAvailabilty(DepSt, ArrSt, nt);
                     goto mainMenu;
                 }
             };
             break;
             case 2:
             {
-                //system("CLS");
                 Reservations R3;
-                if(!R3.Login()){
-                    //system("PAUSE");
+                if (!R3.Login())
+                {
                     goto mainMenu;
                 }
                 R3.SearchFile_and_Update();
                 cout << "Moving to Main Menu...\n\n";
-                //system("PAUSE");
                 goto mainMenu;
-                //system("CLS");
             };
             break;
             case 3:
             {
-                //system("CLS");
                 Reservations R4;
-                if(!R4.Login()){
+                if (!R4.Login())
+                {
                     goto mainMenu;
                 }
                 R4.Deletes();
                 cout << "Moving to the Main Menu...\n\n";
-                //system("PAUSE");
                 goto mainMenu;
-                //system("CLS");
             };
             break;
-            // case 4:
-            // {
-            //     Reservations myr;
-            //     myr.Login();
+                // case 4:
+                // {
+                //     Reservations myr;
+                //     myr.Login();
 
-            //     myr.Show();
-            //     goto mainMenu;
-            // }
-            break;
-             case 5:
-              goto mainMenu;
-              break;
-             }// second sub switch end    //main switch case 2 ;
+                //     myr.Show();
+                //     goto mainMenu;
+                // }
+                break;
+            case 5:
+                goto mainMenu;
+                break;
+            } // second sub switch end    //main switch case 2 ;
         };
         break;
         case 3:
         {
-            //system("CLS");
+            cout << "\n\nThanks for Running Our Program! See you Soon!\n\n";
             exit(0);
         };
         break;
@@ -240,7 +221,7 @@ int main()
     }
     catch (...)
     {
-        perror("\n\nUnexpected Error occoured, Program is terminating!!\n\n");
+        cout << "\n\nUnexpected Error occoured, Program is terminating!!\n\n";
         exit(0);
     }
     return 0;

@@ -131,6 +131,7 @@ inline Reservations ::Reservations(string NIC, string DeptSt, string ArrivalSt, 
         cout << "\n\nConfirmation denied and exiting from the program \n";
         exit(0);
     }
+    r2.CheckSeatAvailabilty(DeptSt, ArrivalSt, NoTickets);
     r2.Show(str_NIC, str_Dep_St, str_Arrival_St, i_No_Tickets, ticket, i_total);
 }
 
@@ -251,8 +252,8 @@ inline void Reservations ::Deletes()
         cin >> str_NIC;
         cout << "\n\n-------------------------------------------------\n\n";
         ResIn.open("Reservations.txt");
-        SeatIn.open("Seats.txt");
-        while (ResIn >> nic >> dept >> arr >> nt >> ch >> tot)
+        SeatIn.open("Seat.txt");
+        while (ResIn >> nic >> dept >> arr >> nt >> tot)
         {
             ResOut.open("temp5.txt", ios ::app | ios ::out);
             if (nic != str_NIC)
@@ -263,8 +264,7 @@ inline void Reservations ::Deletes()
                     if (nic2 != str_NIC)
                     {
                         SeatOut << nic2 << "\t" << nt << "\n";
-                        ResOut << nic << "\t" << dept << "\t" << arr << "\t" << nt << "\t" << ch
-                               << tot << "\n";
+                        ResOut << nic << "\t" << dept << "\t" << arr << "\t" << nt << "\t" << tot << "\n";
                     }
                     else
                     {
@@ -286,11 +286,12 @@ inline void Reservations ::Deletes()
     {
         remove("Reservations.txt");
         rename("temp5.txt", "Reservations.txt");
-        remove("Seats.txt");
-        rename("temp6.txt", "Seats.txt");
+        remove("Seat.txt");
+        rename("temp6.txt", "Seat.txt");
+        cout << "\n\nDone!\n\n";
     }
     ResIn.close();
-    cout << "\n\nDone!\n\n";
+    SeatIn.close();
 }
 
 // Reservations - Show
@@ -303,8 +304,8 @@ inline void Reservations ::Show(string NIC, string Dept_St, string Arrival_St, i
          << "\tArrival St. : " << Arrival_St << "\n\n"
          << "\tNo. of Tickets :" << No_Tickets << "\n\n"
          << "\tCharge for one ticket : " << Charge << "\n\n"
-         << "--------------------------------------------------------------\n"
-         << "\t\nTotal Fare = " << total << "\n\n"
+         << "*****************************************************************\n"
+         << "\tTotal Fare = " << total << "\n\n"
          <<"**************************************************************\n";
 }
 
