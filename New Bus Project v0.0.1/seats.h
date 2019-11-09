@@ -17,19 +17,44 @@ inline void Seats ::CheckSeatAvailabilty(string DepSt, string ArrSt, int nt)
     
     //int NoLines = 0;
     //string line;
-    int seats;
-    fstream SeatAvailbility;
+    int seats, cntr=0;
+    ifstream SeatAvailbility;
+    ofstream seat_update;
     string s1, s2;
     SeatAvailbility.open("seat_available.txt");
     while ( SeatAvailbility >> s1 >> s2 >> seats)
     {
-        if ((DepSt == s1) & (ArrSt == s2))
+        seat_update.open("temp11.txt", ios::app);
+        if ((s1 == DepSt) & (s2 == ArrSt))
         {
             seats = seats - nt;
-            SeatAvailbility << DepSt << "\t" << ArrSt << "\t" << seats << "\n";
+
+            // if(seats < 0)
+            // {
+            //     cout << "Sorry! No More Seats Availabe :( " << endl;
+            //     exit(1);
+            // }
+ 
+            
+            seat_update << DepSt << "\t" << ArrSt << "\t" << seats << "\n";
+            cntr++;
         }
+        else
+        {
+            seat_update << s1 << "\t" << s2 << "\t" << seats << "\n";
+        }
+        seat_update.close();
     }
-    
+    SeatAvailbility.close();
+    if (cntr == 0)
+    {
+        remove("temp11.txt");
+    }
+    if (cntr > 0)
+    {
+        remove("seat_available.txt");
+        rename("temp11.txt", "seat_available.txt");
+    }
 
     //  while (SeatAvailbility.eof())
     //  {
@@ -45,5 +70,4 @@ inline void Seats ::CheckSeatAvailabilty(string DepSt, string ArrSt, int nt)
     // {
     //     cout << "\n\n" << 32 - i_SeatNo << "  are available.\n\n";
     // }
-    SeatAvailbility.close();
 } // seat availability  function end

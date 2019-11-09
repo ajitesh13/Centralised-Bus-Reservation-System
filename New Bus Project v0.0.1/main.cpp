@@ -163,20 +163,19 @@ int main()
                     Payments Pa1;
                     
                     //T1.Show();
-                    
-                    //Pa1.Show();
                     cout << "\n\n Passenger NIC:\n\n ";
                     cin >> NIC;
-                    string search1, search2;
-                
-
                     
+                    Pa1.Show();
+                    
+                    string search1, search2;
                     cout << "\n\n Enter Your Depature station\n\n ";
                     cin >> DepSt;
                     cout << "\n\n Enter Your Arrival station\n\n ";
                     cin >> ArrSt;
                     cout << "\n\nNo. of Tickets\n\n ";
                     cin >> nt;
+                    
                     Reservations R2(NIC, DepSt, ArrSt, nt);
                     R2.CheckSeatAvailabilty(DepSt, ArrSt, nt);
                     
