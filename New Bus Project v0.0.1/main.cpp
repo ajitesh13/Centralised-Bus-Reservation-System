@@ -146,7 +146,7 @@ int main()
                 Reservations R2;
                 if(!R2.Login()){
                     cout<<"Try Again!!"<<endl;
-                    system("PAUSE");
+                    //system("PAUSE");
                     goto mainMenu;
                 }
                 char check='y';
@@ -168,46 +168,18 @@ int main()
                     cout << "\n\n Passenger NIC:\n\n ";
                     cin >> NIC;
                     string search1, search2;
-                    cout << "Enter destinations you want to travel:\n";
-                    cout << "\nDestination 1:\n\n";
-                    cin >> search1;
-                    cout << "\nDestination 2:\n\n";
-                    cin >> search2;
-                    ifstream FileSearch;
-                    string line;
-                    int success=0;
-                    FileSearch.open("payments.txt");
-                        if(FileSearch.is_open())
-                        {
-                            while(getline(FileSearch, line))
-                            {
-                                if(line.find(search1)!=string::npos && line.find(search2)!=string::npos)
-                                {
-                                    if(success==0)
-                                    {
-                                        cout<<UNDERLINE<<"\n\nAvailable Buses"<<CLOSEUNDERLINE<<endl;
-                                    }
-                                    cout << "\n"<< line <<endl;
-                                    success=1;
-                                }
-                                
-                            }
-                            if(success==0){
-                                cout << "\nThis service is currently unavailable\n\n";
-                            }
-                            
-                        }
-                    FileSearch.close();
-                    if(success==1){
-                        cout << "\n\n Depature station\n\n ";
-                        cin >> DepSt;
-                        cout << "\n\n Arrival station\n\n ";
-                        cin >> ArrSt;
-                        cout << "\n\nNo. of Tickets\n\n ";
-                        cin >> nt;
-                        Reservations R2(NIC, DepSt, ArrSt, nt);
-                        R2.CheckSeatAvailabilty(DepSt, ArrSt, nt);
-                    }
+                
+
+                    
+                    cout << "\n\n Enter Your Depature station\n\n ";
+                    cin >> DepSt;
+                    cout << "\n\n Enter Your Arrival station\n\n ";
+                    cin >> ArrSt;
+                    cout << "\n\nNo. of Tickets\n\n ";
+                    cin >> nt;
+                    Reservations R2(NIC, DepSt, ArrSt, nt);
+                    R2.CheckSeatAvailabilty(DepSt, ArrSt, nt);
+                    
                 }
                 else{
                     //system("PAUSE");

@@ -1,8 +1,6 @@
 bhubaneswar sambalpur 40
-sambalpur bhubaneswbhubaneswar	sambalpur	37
- 40
-sambalpur berhampur 40
-bhubaneswar berhampur 40
+sambalpur bhubaneswar 40sambalpur	bhubaneswar	33
+hubaneswar berhampur 40
 berhampur bhubaneswar 40
 cuttack bhubaneswar 40
 bhubaneswar cuttack 40

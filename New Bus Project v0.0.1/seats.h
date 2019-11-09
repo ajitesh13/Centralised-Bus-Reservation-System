@@ -27,8 +27,6 @@ inline void Seats ::CheckSeatAvailabilty(string DepSt, string ArrSt, int nt)
         {
             seats = seats - nt;
             SeatAvailbility << DepSt << "\t" << ArrSt << "\t" << seats << "\n";
-
-            
         }
     }
     
