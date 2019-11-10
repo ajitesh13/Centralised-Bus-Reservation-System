@@ -86,7 +86,7 @@ inline TimeTables :: ~TimeTables(){}
 
 // Reservations constructor
 inline Reservations ::Reservations(string customer_id, string DeptSt, string ArrivalSt, int NoTickets)
-{
+{cout<<"\n\t\t***Reservation successful!!***"<<endl;
     Reservations r2;
     str_customer_id = customer_id;
     str_Dep_St = DeptSt;
@@ -132,7 +132,6 @@ inline Reservations ::Reservations(string customer_id, string DeptSt, string Arr
         exit(0);
     }
     r2.CheckSeatAvailabilty(DeptSt, ArrivalSt, NoTickets);
-    cout<<"\n\t\t***Reservation successful!!***"<<endl;
     r2.Show(str_customer_id, str_Dep_St, str_Arrival_St, i_No_Tickets, ticket, i_total);
 }
 
@@ -293,9 +292,9 @@ inline void Reservations ::Show(string customer_id, string Dept_St, string Arriv
          << "\tArrival St. : " << Arrival_St << "\n\n"
          << "\tNo. of Tickets :" << No_Tickets << "\n\n"
          << "\tCharge for one ticket : " << Charge << "\n\n"
-         << "*****************************************************************\n"
+         << "=================================================================\n"
          << "\tTotal Fare = " << total << "\n\n"
-         <<"**************************************************************\n";
+         <<"******************************************************************\n";
 }
 
 // Reservations Deconstructor
