@@ -48,7 +48,6 @@ inline void Seats ::CheckSeatAvailabilty(string DepSt, string ArrSt, int nt)
     {
         remove("seat_available.txt");
         rename("temp11.txt", "seat_available.txt");
-        cout << "\n\n***YOUR RESERVATION IS SUCCESSFULL!***\n";
     }
 
 } 

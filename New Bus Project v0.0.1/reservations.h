@@ -86,7 +86,7 @@ inline TimeTables :: ~TimeTables(){}
 
 // Reservations constructor
 inline Reservations ::Reservations(string customer_id, string DeptSt, string ArrivalSt, int NoTickets)
-{cout<<"\n\t\t***Reservation successful!!***"<<endl;
+{
     Reservations r2;
     str_customer_id = customer_id;
     str_Dep_St = DeptSt;
@@ -95,9 +95,9 @@ inline Reservations ::Reservations(string customer_id, string DeptSt, string Arr
     ifstream PaymentsRead;
     PaymentsRead.open("Payments.txt");
     double ch,ticket;
-    string s1, s2;
+    string s1, s2, s3, s4;
     int ot=0;
-    while (PaymentsRead >> s1 >> s2 >> ch)
+    while (PaymentsRead >> s1 >> s2 >> ch >> s3 >> s4)
     {
         if ((str_Dep_St == s1) & (str_Arrival_St == s2))
         {
@@ -132,6 +132,7 @@ inline Reservations ::Reservations(string customer_id, string DeptSt, string Arr
         exit(0);
     }
     r2.CheckSeatAvailabilty(DeptSt, ArrivalSt, NoTickets);
+    cout<<"\n\t\t***RSERVATION IS SUCCESSFULL!!***"<<endl;
     r2.Show(str_customer_id, str_Dep_St, str_Arrival_St, i_No_Tickets, ticket, i_total);
 }
 
