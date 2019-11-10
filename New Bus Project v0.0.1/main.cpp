@@ -12,7 +12,7 @@ int main()
     try
     {
     mainMenu:
-        cout << "\n\n\t\t\t   " << UNDERLINE << "WELCOME TO INDIAN ROADWAYS" << CLOSEUNDERLINE << "\n\n";
+        cout << "\n\n\t\t\t   " << UNDERLINE <<bold_on<< "WELCOME TO INDIAN ROADWAYS"<<bold_off << CLOSEUNDERLINE << "\n\n";
         cout << "\n\n\t\t\t\t1.Customer\n\n"
              << "\t\t\t\t2.Reservation\n\n"
              << "\t\t\t\t3.Exit\n\n"
@@ -61,7 +61,7 @@ int main()
             {
 
                 cout << "========================================================================================\n";
-                cout << "\t\t\t" << UNDERLINE << "REGISTER HERE!!" << CLOSEUNDERLINE << "\n";
+                cout << "\t\t\t" << UNDERLINE <<bold_on<< "REGISTER HERE!!"<<bold_off << CLOSEUNDERLINE << "\n\n";
                 cout << "\t(Please fill in this information for the Registration)\n";
                 cout << "Note: All entries in the form should be of one word and should not contain spaces.";
                 cout << "\n\nPassenger Name:\n\n";
@@ -79,10 +79,10 @@ int main()
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 //make the password protective
                 customer_id = (gen_id());
-                cout << "\nYour Customer ID is: " << customer_id<< endl;
+                cout << "\nYour Customer ID is: " <<bold_on<< customer_id<< bold_off << endl;
                 cout << "Remember this for login and other future purposes.\n"<< endl;
                 Passenger P1(name, customer_id, City, ContactNumber, UserName, Password);
-                goto subMenu;
+                goto mainMenu;
 
             }; // Sub  choice first case
             break;
@@ -201,7 +201,7 @@ int main()
                 // }
                 break;
             case 5:
-                goto subMenu2;
+                goto mainMenu;
                 break;
             } // second sub switch end  
         };

@@ -1,8 +1,20 @@
 #include "bits/stdc++.h"
 #include "seats.h"
 #include "passenger.h"
+#define UNDERLINE "\033[4m"
+#define CLOSEUNDERLINE "\033[0m"
 
 using namespace std;
+//text bold
+ostream& bold_on(ostream& os)
+{
+return os << "\e[1m";
+}
+
+ostream& bold_off(ostream& os)
+{
+return os << "\e[0m";
+}
 
 // class Reservations
 class Reservations : public Passenger, public Seats
@@ -95,7 +107,7 @@ inline Reservations ::Reservations(string customer_id, string DeptSt, string Arr
                      << "\t" << i_total << "\n";
         Reservations.close();
         r2.CheckSeatAvailabilty(DeptSt, ArrivalSt, NoTickets);
-        cout<<"\n\t\t***RESERVATION IS SUCCESSFUL!!***\n"<<endl;
+        cout<<bold_on<<"\n\t\t***RESERVATION IS SUCCESSFULL!!***\n"<<bold_off<<endl;
         r2.Show(str_customer_id, str_Dep_St, str_Arrival_St, i_No_Tickets, ticket, i_total);
     }
     else
@@ -247,6 +259,7 @@ inline void Reservations ::Deletes()
 inline void Reservations ::Show(string customer_id, string Dept_St, string Arrival_St, int No_Tickets, int Charge, int total)
 {
     cout <<"\n\n**************************************************************\n"
+         <<bold_on<<"\t\t\t      "<<UNDERLINE<<"INDIAN ROADWAYS"<<CLOSEUNDERLINE<<bold_off<<"\n\n"
          << "\tCustomer ID :" << customer_id << "\n\n"
          << "\tDep. St. : " << Dept_St << "\n\n"
          << "\tArrival St. : " << Arrival_St << "\n\n"
@@ -254,7 +267,7 @@ inline void Reservations ::Show(string customer_id, string Dept_St, string Arriv
          << "\tCharge for one ticket : " << Charge << "\n\n"
          << "\t\t*********************************\n"
          << "\n\t\t\tTotal Fare = " << total << endl
-         <<"\n**************************************************************\n";
+         <<"\n***************************************************************\n";
 }      
 
 // Reservations Deconstructor
