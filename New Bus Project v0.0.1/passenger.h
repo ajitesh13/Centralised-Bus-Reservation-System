@@ -37,7 +37,7 @@ inline Passenger ::Passenger(string name, string customer_id, string City, strin
 }
 
 // Delete record function
-inline void Passenger::Deletes() /* ERROR COMING HERE*/
+inline void Passenger::Deletes()
 {
     string customer_id, name, city, username, password, cn;
     cout << "\n\nEnter your Customer ID to delete the record :\n\n";
@@ -140,7 +140,6 @@ inline bool Passenger ::Login()
     cin >> username01;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout << "\n\nEnter your Password:\n\n";
-    //system("COLOR 6E") ;
     cin >> password01;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     ifstream matchup;
@@ -148,7 +147,6 @@ inline bool Passenger ::Login()
     string s1, s2, s3, s4, s5, s6;
     while (matchup >> s1 >> s2 >> s3 >> s4 >> s5 >> s6)
     {
-        //cout<< s1 <<" "<< s2 <<" "<< s3 <<" "<< s4 <<" "<< s5 <<" "<< s6 <<endl;
         if (username01==s5 && password01==s6)
         {
             x++;

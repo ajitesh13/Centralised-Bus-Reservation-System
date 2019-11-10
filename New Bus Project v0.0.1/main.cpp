@@ -12,7 +12,7 @@ int main()
     try
     {
     mainMenu:
-        cout << "\n\n\t" << UNDERLINE << "Welcome to Indian Roadways(Dept. of Bus & Public Transport)" << CLOSEUNDERLINE << "\n\n";
+        cout << "\n\n\t\t\t   " << UNDERLINE << "WELCOME TO INDIAN ROADWAYS" << CLOSEUNDERLINE << "\n\n";
         cout << "\n\n\t\t\t\t1.Customer\n\n"
              << "\t\t\t\t2.Reservation\n\n"
              << "\t\t\t\t3.Exit\n\n"
@@ -151,15 +151,10 @@ int main()
                 char check = 'y';
                 if (check == 'y')
                 {
-                    // TimeTables T1;
                     Payments Pa1;
-
-                    //T1.Show();
                     cout << "\nPassenger Customer ID:\n\n";
                     cin >> customer_id;
-
                     Pa1.Show();
-
                     string search1, search2;
                     cout << "\n\n Enter Your Depature station\n\n ";
                     cin >> DepSt;
@@ -167,7 +162,6 @@ int main()
                     cin >> ArrSt;
                     cout << "\n\nNo. of Tickets\n\n ";
                     cin >> nt;
-
                     Reservations R2(customer_id, DepSt, ArrSt, nt);
                     goto mainMenu;
                 }
@@ -209,7 +203,7 @@ int main()
             case 5:
                 goto subMenu2;
                 break;
-            } // second sub switch end    //main switch case 2 ;
+            } // second sub switch end  
         };
         break;
         case 3:
@@ -232,14 +226,12 @@ int main()
 string gen_id(){
     long long x =190000;
     string line;
- 
     /* Creating input filestream */ 
     ifstream file("Passenger.txt");
     string s1, s2, s3, s4, s5, s6, id;
     while (file >>  s1 >> s2 >> s3 >> s4 >> s5 >> s6){
         x = stoll(s1);
     }
-
     id = to_string(x+1);
     return id;
 }

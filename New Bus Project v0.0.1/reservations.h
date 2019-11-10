@@ -40,12 +40,10 @@ inline void Payments ::Show() const
     fstream payments;
     payments.open("Payments.txt", ios::in);
     string line;
-    //cout << "\n\n-----------------Payment Scheme------------------\n\n";
     cout << "\n\n";
     if (! payments.is_open())
     {
         cout << "Unable to open payment records!!" << endl;
-        exit (1);
     }
     while (!payments.eof())
     {
@@ -64,11 +62,11 @@ inline Reservations ::Reservations(string customer_id, string DeptSt, string Arr
     str_Arrival_St = ArrivalSt;
     i_No_Tickets = NoTickets;
     ifstream PaymentsRead;
-    PaymentsRead.open("Payments.txt");
+    PaymentsRead.open("Timetables.txt");
     double ch,ticket;
-    string s1, s2, s3, s4;
+    string s1, s2;
     int ot=0;
-    while (PaymentsRead >> s1 >> s2 >> ch >> s3 >> s4)
+    while (PaymentsRead >> s1 >> s2 >> ch)
     {
         if ((str_Dep_St == s1) & (str_Arrival_St == s2))
         {
@@ -240,7 +238,7 @@ inline void Reservations ::Deletes()
     {
         remove("Reservations.txt");
         rename("temp5.txt", "Reservations.txt");
-        cout << "\n\n\t***Your Reservation Cancelled Successfully!!***\n";
+        cout << "\n\n\t***Your Reservation Cancelled Successfully!!***\n\n";
     }
     ResIn.close();
 }
