@@ -4,7 +4,6 @@
 
 using namespace std;
 
-
 // class Reservations
 class Reservations : public Passenger, public Seats
 {
@@ -44,46 +43,17 @@ inline void Payments ::Show() const
     cout << "\n\n-----------------Payment Scheme------------------\n\n";
     if (! payments.is_open())
     {
-        cerr << "Unable to open payment records!!" << endl;
+        cout << "Unable to open payment records!!" << endl;
         exit (1);
     }
     while (!payments.eof())
     {
         getline(payments, line);
-        cout << line << "\n";
+        cout << line << endl;
     }
     payments.close();
 }
 inline Payments :: ~Payments(){}
-
-// class TimeTables
-class TimeTables : public Reservations
-{
-public:
-    void Show() const;
-    ~TimeTables();
-};
-
-
-// timetables - Show
-inline void TimeTables ::Show() const
-{
-    string line2;
-    ifstream timetable("Timetables.txt");
-    cout << "\n\n----------------TimeTable-------------------------\n\n";
-    if (! timetable.is_open())
-    {
-        cerr << "Unable to open timetable" << endl;
-        exit (1);
-    }
-    while (! timetable.eof())
-    {
-        getline(timetable, line2);
-        cout << line2 << "\n\n";
-    }
-}
-inline TimeTables :: ~TimeTables(){}
-
 // Reservations constructor
 inline Reservations ::Reservations(string customer_id, string DeptSt, string ArrivalSt, int NoTickets)
 {
@@ -132,30 +102,29 @@ inline Reservations ::Reservations(string customer_id, string DeptSt, string Arr
         exit(0);
     }
     r2.CheckSeatAvailabilty(DeptSt, ArrivalSt, NoTickets);
-    cout<<"\n\t\t***RSERVATION IS SUCCESSFULL!!***"<<endl;
+    cout<<"\n\t\t***RESERVATION IS SUCCESSFUL!!***\n"<<endl;
     r2.Show(str_customer_id, str_Dep_St, str_Arrival_St, i_No_Tickets, ticket, i_total);
 }
 
 // modify Reservation function
-inline void Reservations ::SearchFile_and_Update()
+inline void Reservations ::SearchFile_and_Update() //error
 {
     Reservations r1;
     double ch;
     char confirmation;
     int s7;
-    ifstream reservationsIn; //SEARCH
-    ifstream seatsIn;        //search
+    ifstream reservationsIn; 
+    ifstream seatsIn;       
     fstream reservationsOut;
     fstream seatsOut;
     cout << "\n\nConfirm the You wants to modify reservation(Y/N): \n\n";
     cin >> confirmation;
     confirmation = tolower(confirmation);
-    //system("CLS");
     if (confirmation == 'y')
     {
-        TimeTables T1;
+        // TimeTables T1;
         Payments P1;
-        T1.Show();
+        // T1.Show();
         P1.Show();
         cout << "\n\n-------------------------------------------------\n\n";
         cout << "\n\nEnter your Customer ID:\n\n";
@@ -277,7 +246,7 @@ inline void Reservations ::Deletes()
     {
         remove("Reservations.txt");
         rename("temp5.txt", "Reservations.txt");
-        cout << "\n\nDone!\n\n";
+        cout << "\n\n\t\t\t***Your Reservation Cancelled Successfully!!***\n";
     }
     ResIn.close();
 }
@@ -286,7 +255,6 @@ inline void Reservations ::Deletes()
 // Reservations - Show
 inline void Reservations ::Show(string customer_id, string Dept_St, string Arrival_St, int No_Tickets, int Charge, int total)
 {
-    //system("CLS");
     cout <<"\n\n**************************************************************\n"
          << "\tCustomer ID :" << customer_id << "\n\n"
          << "\tDep. St. : " << Dept_St << "\n\n"
@@ -294,9 +262,9 @@ inline void Reservations ::Show(string customer_id, string Dept_St, string Arriv
          << "\tNo. of Tickets :" << No_Tickets << "\n\n"
          << "\tCharge for one ticket : " << Charge << "\n\n"
          << "=================================================================\n"
-         << "\tTotal Fare = " << total << "\n\n"
+         << "\t\t\tTotal Fare = " << total << endl
          <<"******************************************************************\n";
-}
+}      
 
 // Reservations Deconstructor
 inline Reservations ::~Reservations() {}

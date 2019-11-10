@@ -151,7 +151,7 @@ int main()
                 char check = 'y';
                 if (check == 'y')
                 {
-                    TimeTables T1;
+                    // TimeTables T1;
                     Payments Pa1;
 
                     //T1.Show();
