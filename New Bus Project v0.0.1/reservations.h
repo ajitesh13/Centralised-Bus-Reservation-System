@@ -40,7 +40,8 @@ inline void Payments ::Show() const
     fstream payments;
     payments.open("Payments.txt", ios::in);
     string line;
-    cout << "\n\n-----------------Payment Scheme------------------\n\n";
+    //cout << "\n\n-----------------Payment Scheme------------------\n\n";
+    cout << "\n\n";
     if (! payments.is_open())
     {
         cout << "Unable to open payment records!!" << endl;
