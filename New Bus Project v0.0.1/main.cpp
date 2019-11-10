@@ -1,13 +1,14 @@
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 #include "reservations.h"
-#include "string.h"
 #define UNDERLINE "\033[4m"
 #define CLOSEUNDERLINE "\033[0m"
 using namespace std;
+string gen_id();
+
 int main()
 {
     int mainchoice, subChoiceOne, nt;
-    string name, NIC, City, Password, UserName, ContactNumber, DepSt, ArrSt;
+    string name, customer_id, City, Password, UserName, ContactNumber, DepSt, ArrSt;
     try
     {
     mainMenu:
@@ -66,8 +67,6 @@ int main()
                 cout << "\n\nPassenger Name:\n\n";
                 cin >> name;
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "\n\nPassenger NIC:\n\n ";
-                cin >> NIC;
                 cout << "\n\nPassenger City:\n\n ";
                 cin >> City;
                 cout << "\n\nPassenger : Contact No\n\n ";
@@ -79,7 +78,10 @@ int main()
                 cin >> Password;
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 //make the password protective
-                Passenger P1(name, NIC, City, ContactNumber, UserName, Password);
+                customer_id = (gen_id());
+                cout << "\nYour Customer ID is: " << customer_id<< endl;
+                cout << "Remember this for login and other future purposes.\n"<< endl;
+                Passenger P1(name, customer_id, City, ContactNumber, UserName, Password);
                 goto subMenu;
 
             }; // Sub  choice first case
@@ -153,8 +155,8 @@ int main()
                     Payments Pa1;
 
                     //T1.Show();
-                    cout << "\nPassenger NIC:\n\n";
-                    cin >> NIC;
+                    cout << "\nPassenger Customer ID:\n\n";
+                    cin >> customer_id;
 
                     Pa1.Show();
 
@@ -166,7 +168,7 @@ int main()
                     cout << "\n\nNo. of Tickets\n\n ";
                     cin >> nt;
 
-                    Reservations R2(NIC, DepSt, ArrSt, nt);
+                    Reservations R2(customer_id, DepSt, ArrSt, nt);
                     //R2.CheckSeatAvailabilty(DepSt, ArrSt, nt);
                     goto mainMenu;
                 }
@@ -213,7 +215,7 @@ int main()
         break;
         case 3:
         {
-            cout << "\n\nThanks for Running Our Program! See you Soon!\n\n";
+            cout << "\n\nThanks for USing Our Service! Hope to see you again!\n\n";
             exit(0);
         };
         break;
@@ -225,4 +227,20 @@ int main()
         exit(0);
     }
     return 0;
+}
+
+//generates a unique customer_id
+string gen_id(){
+    long long x =190000;
+    string line;
+ 
+    /* Creating input filestream */ 
+    ifstream file("Passenger.txt");
+    string s1, s2, s3, s4, s5, s6, id;
+    while (file >>  s1 >> s2 >> s3 >> s4 >> s5 >> s6){
+        x = stoll(s1);
+    }
+
+    id = to_string(x+1);
+    return id;
 }
