@@ -1,2 +1,0 @@
-456	sambalpur	bhubaneswar	31	15500
-123	bhubaneswar	jaipur	35	35000

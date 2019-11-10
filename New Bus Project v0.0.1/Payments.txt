@@ -22,3 +22,7 @@ bhubaneswar jaipur 1000.00
 jaipur bhubaneswar 1000.00
 bhubaneswar bhopal 1500.00
 bhopal bhubaneswar 1500.00
+bhadrak bhubaneswar 200.00
+bhubaneswar bhadrak 200.00
+bhubaneswar vishakhapatnam 600.00
+vishakhapatnam bhubaneswar 600.00

@@ -14,9 +14,6 @@ public:
 // Seats - CheckSeatAvailability
 inline void Seats ::CheckSeatAvailabilty(string DepSt, string ArrSt, int nt)
 {
-    
-    //int NoLines = 0;
-    //string line;
     int seats, cntr=0;
     ifstream SeatAvailbility;
     ofstream seat_update;
@@ -32,9 +29,7 @@ inline void Seats ::CheckSeatAvailabilty(string DepSt, string ArrSt, int nt)
             {
                 cout << "\n\n\n****SORRY! THIS RESERVATION IS NOT POSSIBLE****\n\n\n" << endl;
                 exit(1);
-            }
- 
-            
+            }   
             seat_update << DepSt << "\t" << ArrSt << "\t" << seats << "\n";
             cntr++;
         }

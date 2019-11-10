@@ -132,6 +132,7 @@ inline Reservations ::Reservations(string customer_id, string DeptSt, string Arr
         exit(0);
     }
     r2.CheckSeatAvailabilty(DeptSt, ArrivalSt, NoTickets);
+    cout<<"\n\t\t***Reservation successful!!***"<<endl;
     r2.Show(str_customer_id, str_Dep_St, str_Arrival_St, i_No_Tickets, ticket, i_total);
 }
 
