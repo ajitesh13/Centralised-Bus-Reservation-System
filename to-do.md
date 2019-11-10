@@ -6,7 +6,7 @@
 - [x] timetable and payment details added
 - [x] remove account malfunctioning
 - [ ] add arrival and departure in timetable    
-- [ ] Make nic unique or find an alternate solution to keep the entries unique
+- [ ] Make customer_id unique or find an alternate solution to keep the entries unique
 
 ## To-do
 - [ ] Display passemger details after rege=istration.

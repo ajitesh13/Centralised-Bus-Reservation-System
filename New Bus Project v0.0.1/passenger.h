@@ -8,11 +8,11 @@ class Passenger
     string str_City, str_ContactNumber, str_UserName, str_Password, str_name;
 
 protected:
-    string str_NIC;
+    string str_customer_id;
 
 public:
     Passenger() {}
-    Passenger(string name, string NIC, string City, string ContactNumber, string Username, string Password);
+    Passenger(string name, string customer_id, string City, string ContactNumber, string Username, string Password);
     bool Login();
     void SearchFile_and_Update();
     void Deletes();
@@ -21,17 +21,17 @@ public:
 inline Passenger :: ~Passenger(){}
 
 // Passenger constructor
-inline Passenger ::Passenger(string name, string NIC, string City, string ContactNumber, string Username, string Password)
+inline Passenger ::Passenger(string name, string customer_id, string City, string ContactNumber, string Username, string Password)
 {
     str_name = name;
-    str_NIC = NIC;
+    str_customer_id = customer_id;
     str_City = City;
     str_ContactNumber = ContactNumber;
     str_UserName = Username;
     str_Password = Password;
     fstream registration;
     registration.open("Passenger.txt", ios::app | ios::out | ios::ate);
-    registration << str_NIC << "\t" << str_name << "\t" << str_City << "\t" << str_ContactNumber << "\t" << str_UserName
+    registration << str_customer_id << "\t" << str_name << "\t" << str_City << "\t" << str_ContactNumber << "\t" << str_UserName
                  << "\t" << str_Password << "\n";
     registration.close();
 }
@@ -39,18 +39,18 @@ inline Passenger ::Passenger(string name, string NIC, string City, string Contac
 // Delete record function
 inline void Passenger::Deletes() /* ERROR COMING HERE*/
 {
-    string nic, name, city, username, password, cn;
-    cout << "\n\nEnter your NIC to delete the record :\n\n";
-    cin >> str_NIC;
+    string customer_id, name, city, username, password, cn;
+    cout << "\n\nEnter your Customer ID to delete the record :\n\n";
+    cin >> str_customer_id;
     fstream deleteF;
     ofstream df;
     deleteF.open("Passenger.txt", ios::in);
-    while (deleteF >> nic >> name >> city >> cn >> username >> password)
+    while (deleteF >> customer_id >> name >> city >> cn >> username >> password)
     {
         df.open("temp2.txt", ios ::out | ios :: app);
-        if (nic != str_NIC)
+        if (customer_id != str_customer_id)
         {
-            df << nic << "\t" << name << "\t" << city << "\t"
+            df << customer_id << "\t" << name << "\t" << city << "\t"
                << cn << "\t" << username
                << "\t" << password << "\n";
         }
@@ -77,18 +77,18 @@ inline void Passenger::Deletes() /* ERROR COMING HERE*/
 // Search file and update
 inline void Passenger ::SearchFile_and_Update()
 {
-    string nic, name, city, username, password, cn;
+    string customer_id, name, city, username, password, cn;
     cout << "\n\n-------------------------------------------------\n\n";
-    cout << "\n\nEnter your NIC :\n\n";
-    cin >> str_NIC;
+    cout << "\n\nEnter your Customer ID :\n\n";
+    cin >> str_customer_id;
     ifstream PassengerIn;
     ofstream writeFile;
     PassengerIn.open("Passenger.txt");
-    while (PassengerIn >> nic >> name >> city >> cn >> username >> password)
+    while (PassengerIn >> customer_id >> name >> city >> cn >> username >> password)
     {
         count01 = 0;
         writeFile.open("temp1.txt", ios ::app);
-        if (nic == str_NIC)
+        if (customer_id == str_customer_id)
         {
             cout << "\n\nRecord found!\n\n";
             cout << "\n\n-------------------------------------------------\n\n";
@@ -102,14 +102,14 @@ inline void Passenger ::SearchFile_and_Update()
             cin >> str_UserName;
             cout << "\n\nNew Passenger : Password\n\n ";
             cin >> str_Password;
-            writeFile << str_NIC << "\t" << str_name << "\t" << str_City << "\t"
+            writeFile << str_customer_id << "\t" << str_name << "\t" << str_City << "\t"
                       << str_ContactNumber << "\t" << str_UserName
                       << "\t" << str_Password << "\n";
             count01++;
         }
         else
         {
-            writeFile << nic << "\t" << name << "\t" << city << "\t"
+            writeFile << customer_id << "\t" << name << "\t" << city << "\t"
                       << cn << "\t" << username
                       << "\t" << password << "\n";
         }

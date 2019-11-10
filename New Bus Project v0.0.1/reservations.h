@@ -16,7 +16,7 @@ protected:
 public:
     Reservations();
     // to make a reservation
-    Reservations(string NIC, string DeptSt, string ArrivalSt, int NoTickets);
+    Reservations(string customer_id, string DeptSt, string ArrivalSt, int NoTickets);
     void SearchFile_and_Update();
     // ModifyReservation Function
     void Deletes();
@@ -85,10 +85,10 @@ inline void TimeTables ::Show() const
 inline TimeTables :: ~TimeTables(){}
 
 // Reservations constructor
-inline Reservations ::Reservations(string NIC, string DeptSt, string ArrivalSt, int NoTickets)
+inline Reservations ::Reservations(string customer_id, string DeptSt, string ArrivalSt, int NoTickets)
 {
     Reservations r2;
-    str_NIC = NIC;
+    str_customer_id = customer_id;
     str_Dep_St = DeptSt;
     str_Arrival_St = ArrivalSt;
     i_No_Tickets = NoTickets;
@@ -121,8 +121,8 @@ inline Reservations ::Reservations(string NIC, string DeptSt, string ArrivalSt, 
         string line;
         Reservations.open("Reservations.txt", ios ::app | ios ::out | ios ::ate | ios ::in);
         Seats.open("Seat.txt", ios ::app | ios ::out | ios ::ate | ios ::in);
-        Seats << str_NIC << "\t" << i_No_Tickets << "\n";
-        Reservations << str_NIC << "\t" << str_Dep_St << "\t" << str_Arrival_St << "\t" << i_No_Tickets
+        Seats << str_customer_id << "\t" << i_No_Tickets << "\n";
+        Reservations << str_customer_id << "\t" << str_Dep_St << "\t" << str_Arrival_St << "\t" << i_No_Tickets
                      << "\t" << i_total << "\n";
         Reservations.close();
     }
@@ -132,7 +132,7 @@ inline Reservations ::Reservations(string NIC, string DeptSt, string ArrivalSt, 
         exit(0);
     }
     r2.CheckSeatAvailabilty(DeptSt, ArrivalSt, NoTickets);
-    r2.Show(str_NIC, str_Dep_St, str_Arrival_St, i_No_Tickets, ticket, i_total);
+    r2.Show(str_customer_id, str_Dep_St, str_Arrival_St, i_No_Tickets, ticket, i_total);
 }
 
 // modify Reservation function
@@ -157,8 +157,8 @@ inline void Reservations ::SearchFile_and_Update()
         T1.Show();
         P1.Show();
         cout << "\n\n-------------------------------------------------\n\n";
-        cout << "\n\nEnter new your NIC :\n\n";
-        cin >> str_NIC;
+        cout << "\n\nEnter your Customer ID:\n\n";
+        cin >> str_customer_id;
         cout << "\n\n-------------------------------------------------\n\n";
         cout << "\n\n New Depature station\n\n ";
         cin >> str_Dep_St;
@@ -183,15 +183,15 @@ inline void Reservations ::SearchFile_and_Update()
         while (reservationsIn >> s1 >> s2 >> s3 >> s4 >> s5)
         {
             reservationsOut.open("temp7.txt", ios ::app);
-            if (s1 == str_NIC)
+            if (s1 == str_customer_id)
             {
                 while (seatsIn >> s6 >> s7)
                 {
                     seatsOut.open("temp8.txt", ios ::app);
-                    if (s6 == str_NIC)
+                    if (s6 == str_customer_id)
                     {
-                        seatsOut << str_NIC << "\t" << i_No_Tickets << "\n";
-                        reservationsOut << str_NIC << "\t" << str_Dep_St << "\t" << str_Arrival_St << "\t" << i_No_Tickets
+                        seatsOut << str_customer_id << "\t" << i_No_Tickets << "\n";
+                        reservationsOut << str_customer_id << "\t" << str_Dep_St << "\t" << str_Arrival_St << "\t" << i_No_Tickets
                                         << "\t" << i_total << "\n";
                         cout << "\n\nRecord found & updated!\n\n";
                         cout << "\n\n-------------------------------------------------\n\n";
@@ -229,7 +229,7 @@ inline void Reservations ::SearchFile_and_Update()
     seatsOut.close();
     reservationsOut.close();
     cout << "\n\nDone!\n\n";
-    r1.Show(str_NIC, str_Dep_St, str_Arrival_St, i_No_Tickets, ch, i_total);
+    r1.Show(str_customer_id, str_Dep_St, str_Arrival_St, i_No_Tickets, ch, i_total);
 }
 
 // cancel Reservations
@@ -237,31 +237,31 @@ inline void Reservations ::Deletes()
 {
     int cntr5=0;
     char confirmation;
-    string nic, dept, arr;
+    string customer_id, dept, arr;
     int nt, tot;
     ifstream ResIn;  //reservations
     //ifstream SeatIn; //seats
     ofstream ResOut;
     //fstream SeatOut;
-    cout << "\n\nConfirm to Cancel The Reservations of your NIC (y/n): \n\n";
+    cout << "\n\nConfirm to Cancel The Reservations of your Customer ID (y/n): \n\n";
     cin >> confirmation;
     confirmation = tolower(confirmation);
     if (confirmation == 'y')
     {
         cout << "\n\n-------------------------------------------------\n\n";
-        cout << "\n\nEnter your NIC :\n\n";
-        cin >> str_NIC;
+        cout << "\n\nEnter your Customer ID :\n\n";
+        cin >> str_customer_id;
         cout << "\n\n-------------------------------------------------\n\n";
         ResIn.open("Reservations.txt");
         ResOut.open("temp5.txt", ios ::app);
-        while (ResIn >> nic >> dept >> arr >> nt >> tot)
+        while (ResIn >> customer_id >> dept >> arr >> nt >> tot)
         {
-            if (nic == str_NIC)
+            if (customer_id == str_customer_id)
             {
                
             }
             else{
-                 ResOut << nic << "\t" << dept << "\t" << arr << "\t" << nt << "\t" << tot << "\n";
+                 ResOut << customer_id << "\t" << dept << "\t" << arr << "\t" << nt << "\t" << tot << "\n";
                 cntr5++;
             }
         }
@@ -283,11 +283,11 @@ inline void Reservations ::Deletes()
 
 
 // Reservations - Show
-inline void Reservations ::Show(string NIC, string Dept_St, string Arrival_St, int No_Tickets, int Charge, int total)
+inline void Reservations ::Show(string customer_id, string Dept_St, string Arrival_St, int No_Tickets, int Charge, int total)
 {
     //system("CLS");
     cout <<"\n\n**************************************************************\n"
-         << "\tNIC :" << NIC << "\n\n"
+         << "\tCustomer ID :" << customer_id << "\n\n"
          << "\tDep. St. : " << Dept_St << "\n\n"
          << "\tArrival St. : " << Arrival_St << "\n\n"
          << "\tNo. of Tickets :" << No_Tickets << "\n\n"
