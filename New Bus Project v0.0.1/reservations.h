@@ -78,8 +78,8 @@ inline Reservations ::Reservations(string customer_id, string DeptSt, string Arr
     }
     if(ot!=1){
         cout<<"\tSorry!No bus found on your searched route\n"<<endl;
-        exit(1);
     }
+    else if (ot>=0){
     char confirmation;
     cout << "\n\nConfirm the Reservation(Y/N): \n\n";
     cin >> confirmation;
@@ -95,15 +95,13 @@ inline Reservations ::Reservations(string customer_id, string DeptSt, string Arr
         Reservations << str_customer_id << "\t" << str_Dep_St << "\t" << str_Arrival_St << "\t" << i_No_Tickets
                      << "\t" << i_total << "\n";
         Reservations.close();
+        r2.CheckSeatAvailabilty(DeptSt, ArrivalSt, NoTickets);
+        cout<<"\n\t\t***RESERVATION IS SUCCESSFUL!!***\n"<<endl;
+        r2.Show(str_customer_id, str_Dep_St, str_Arrival_St, i_No_Tickets, ticket, i_total);
     }
     else
-    {
-        cout << "\n\nConfirmation denied and exiting from the program \n";
-        exit(0);
+        cout << "\n\n\t***Confirmation Denied***\n";
     }
-    r2.CheckSeatAvailabilty(DeptSt, ArrivalSt, NoTickets);
-    cout<<"\n\t\t***RESERVATION IS SUCCESSFUL!!***\n"<<endl;
-    r2.Show(str_customer_id, str_Dep_St, str_Arrival_St, i_No_Tickets, ticket, i_total);
 }
 
 // modify Reservation function
@@ -192,9 +190,9 @@ inline void Reservations ::SearchFile_and_Update() //error
         remove("Seats.txt");
         int r2 = rename("temp8.txt", "Seats.txt");
         if ((r == 0) & (r2 == 0))
-            puts("File successfully renamed");
+            cout<<"File successfully renamed";
         else
-            perror("Error renaming file");
+            cout<<"Error renaming file";
     }
     seatsOut.close();
     reservationsOut.close();
@@ -209,10 +207,8 @@ inline void Reservations ::Deletes()
     char confirmation;
     string customer_id, dept, arr;
     int nt, tot;
-    ifstream ResIn;  //reservations
-    //ifstream SeatIn; //seats
+    ifstream ResIn; 
     ofstream ResOut;
-    //fstream SeatOut;
     cout << "\n\nConfirm to Cancel The Reservations of your Customer ID (y/n): \n\n";
     cin >> confirmation;
     confirmation = tolower(confirmation);
@@ -226,12 +222,9 @@ inline void Reservations ::Deletes()
         ResOut.open("temp5.txt", ios ::app);
         while (ResIn >> customer_id >> dept >> arr >> nt >> tot)
         {
-            if (customer_id == str_customer_id)
+            if (customer_id != str_customer_id)
             {
-               
-            }
-            else{
-                 ResOut << customer_id << "\t" << dept << "\t" << arr << "\t" << nt << "\t" << tot << "\n";
+                ResOut << customer_id << "\t" << dept << "\t" << arr << "\t" << nt << "\t" << tot << "\n";
                 cntr5++;
             }
         }
@@ -246,11 +239,10 @@ inline void Reservations ::Deletes()
     {
         remove("Reservations.txt");
         rename("temp5.txt", "Reservations.txt");
-        cout << "\n\n\t\t\t***Your Reservation Cancelled Successfully!!***\n";
+        cout << "\n\n\t***Your Reservation Cancelled Successfully!!***\n";
     }
     ResIn.close();
 }
-
 
 // Reservations - Show
 inline void Reservations ::Show(string customer_id, string Dept_St, string Arrival_St, int No_Tickets, int Charge, int total)
@@ -261,9 +253,9 @@ inline void Reservations ::Show(string customer_id, string Dept_St, string Arriv
          << "\tArrival St. : " << Arrival_St << "\n\n"
          << "\tNo. of Tickets :" << No_Tickets << "\n\n"
          << "\tCharge for one ticket : " << Charge << "\n\n"
-         << "=================================================================\n"
-         << "\t\t\tTotal Fare = " << total << endl
-         <<"******************************************************************\n";
+         << "\t\t*********************************\n"
+         << "\n\t\t\tTotal Fare = " << total << endl
+         <<"\n**************************************************************\n";
 }      
 
 // Reservations Deconstructor

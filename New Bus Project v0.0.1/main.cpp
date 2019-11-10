@@ -146,7 +146,7 @@ int main()
                 if (!R2.Login())
                 {
                     cout << "Try Again!!" << endl;
-                    goto mainMenu;
+                    goto subMenu2;
                 }
                 char check = 'y';
                 if (check == 'y')
@@ -169,7 +169,6 @@ int main()
                     cin >> nt;
 
                     Reservations R2(customer_id, DepSt, ArrSt, nt);
-                    //R2.CheckSeatAvailabilty(DepSt, ArrSt, nt);
                     goto mainMenu;
                 }
             };
@@ -179,11 +178,11 @@ int main()
                 Reservations R3;
                 if (!R3.Login())
                 {
-                    goto mainMenu;
+                    goto subMenu2;
                 }
                 R3.SearchFile_and_Update();
                 cout << "Moving to Main Menu...\n\n";
-                goto mainMenu;
+                goto subMenu2;
             };
             break;
             case 3:
@@ -191,7 +190,7 @@ int main()
                 Reservations R4;
                 if (!R4.Login())
                 {
-                    goto mainMenu;
+                    goto subMenu2;
                 }
                 R4.Deletes();
                 cout << "Moving to the Main Menu...\n\n";
@@ -208,14 +207,14 @@ int main()
                 // }
                 break;
             case 5:
-                goto mainMenu;
+                goto subMenu2;
                 break;
             } // second sub switch end    //main switch case 2 ;
         };
         break;
         case 3:
         {
-            cout << "\n\nThanks for USing Our Service! Hope to see you again!\n\n";
+            cout << "\n\nThanks for Using Our Service! Hope to see you again!\n\n";
             exit(0);
         };
         break;
