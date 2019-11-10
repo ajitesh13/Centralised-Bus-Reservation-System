@@ -2,3 +2,6 @@
 190003	bhubaneswar	sambalpur	30	15000
 190003	vishakhapatnam	bhubaneswar	7	4200
 190003	sambalpur	berhampur	8	5600
+190002	berhampur	bhubaneswar	4	800
+190002	bhubaneswar	kolkata	3	3000
+

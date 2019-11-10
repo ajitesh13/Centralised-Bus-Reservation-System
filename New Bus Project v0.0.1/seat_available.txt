@@ -1,13 +1,13 @@
-bhubaneswar	sambalpur	6
+bhubaneswar	sambalpur	40
 sambalpur	bhubaneswar	40
 berhampur	sambalpur	40
-sambalpur	berhampur	32
+sambalpur	berhampur	40
 bhubaneswar	berhampur	40
 berhampur	bhubaneswar	40
 cuttack	bhubaneswar	40
 bhubaneswar	cuttack	40
 puri	bhubaneswar	40
-bhubaneswar	puri	40
+bhubaneswar	puri	36
 bhubaneswar	kolkata	40
 kolkata	bhubaneswar	40
 bhubaneswar	jaipur	40
@@ -15,6 +15,6 @@ jaipur	bhubaneswar	40
 bhadrak	bhubaneswar	40
 bhubaneswar	bhadrak	40
 bhubaneswar	vishakhapatnam	40
-vishakhapatnam	bhubaneswar	33
+vishakhapatnam	bhubaneswar	40
 bhubaneswar	rourkela	40
 rourkela	bhubaneswar	40
