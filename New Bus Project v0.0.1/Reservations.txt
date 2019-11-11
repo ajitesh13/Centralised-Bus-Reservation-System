@@ -1,4 +1,0 @@
-190003	bhubaneswar	sambalpur	5	2500
-190003	sambalpur	berhampur	8	5600
-190005	bhubaneswar	puri	6	450
-190001	bhubaneswar	kolkata	8	8000
