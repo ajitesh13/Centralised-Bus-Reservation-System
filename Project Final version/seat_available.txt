@@ -9,7 +9,7 @@ bhubaneswar	cuttack	40
 puri	bhubaneswar	34
 bhubaneswar	puri	40
 bhubaneswar	kolkata	40
-kolkata	bhubaneswar	40
+kolkata	bhubaneswar	25
 bhubaneswar	jaipur	25
 bhubaneswar	sambalpur	34
 sambalpur	bhubaneswar	40
@@ -22,7 +22,7 @@ bhubaneswar	cuttack	40
 puri	bhubaneswar	13
 bhubaneswar	puri	40
 bhubaneswar	kolkata	40
-kolkata	bhubaneswar	40
+kolkata	bhubaneswar	25
 bhubaneswar	jaipur	25
 jaipur	bhubaneswar	31
 bhadrak	bhubaneswar	32

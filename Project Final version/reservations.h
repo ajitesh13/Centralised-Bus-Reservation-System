@@ -144,8 +144,10 @@ inline void Reservations ::SearchFile_and_Update()
         cin >> str_customer_id;
         cout << "\n\nDepature station\n\n ";
         cin >> str_Dep_St;
+         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << "\n\n Arrival station\n\n ";
         cin >> str_Arrival_St;
+         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << "\n\n-------------------------------------------------\n\n";
         cout << "\n\nEnter New  No. of Tickets\n\n ";
         cin >> i_No_Tickets; //new no of tickets
@@ -223,8 +225,10 @@ inline void Reservations ::Deletes()
         cin >> str_customer_id;
         cout << "\n\nDepature station\n\n ";
         cin >> str_Dep_St;
+         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << "\n\n Arrival station\n\n ";
         cin >> str_Arrival_St;
+         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << "\n\n-------------------------------------------------\n\n";
         ResIn.open("Reservations.txt");
         ResOut.open("temp5.txt", ios ::app);
@@ -302,8 +306,10 @@ inline void Reservations ::Show()
     cout << "\n\n-------------------------------------------------\n\n";
     cout << "\n\n Depature station\n\n ";
     cin >> str_Dep_St;
+     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout << "\n\n Arrival station\n\n ";
     cin >> str_Arrival_St;
+     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     fstream read;
     read.open("Reservations.txt");
     fstream time;

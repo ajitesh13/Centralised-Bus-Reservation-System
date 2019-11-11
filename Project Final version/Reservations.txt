@@ -3,3 +3,4 @@
 190009	bhubaneswar	jaipur	15	15000
 190008	rourkela	bhubaneswar	3	1500
 190008	puri	bhubaneswar	6	450
+190001	kolkata	bhubaneswar	15	15000
