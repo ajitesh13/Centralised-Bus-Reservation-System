@@ -1,20 +1,20 @@
-bhubaneswar sambalpur 500.00
-sambalpur bhubaneswar 500.00
-berhampur sambalpur 700.00
-sambalpur berhampur 700.00
-bhubaneswar berhampur 200.00
-berhampur bhubaneswar 200.00
-cuttack bhubaneswar 50.00
-bhubaneswar cuttack 50.00
-puri bhubaneswar 75.00
-bhubaneswar puri 75.00
-bhubaneswar kolkata 1000.00
-kolkata bhubaneswar 1000.00
-bhubaneswar jaipur 1000.00
-jaipur bhubaneswar 1000.00
-bhadrak bhubaneswar 200.00
-bhubaneswar bhadrak 200.00
-bhubaneswar vishakhapatnam 600.00
-vishakhapatnam bhubaneswar 600.00
-bhubaneswar	rourkela	500.00
-rourkela bhubaneswar	500.00
+bhubaneswar sambalpur 500.00 10:30PM 5:00AM
+sambalpur bhubaneswar 500.00 8:30AM 5:00PM
+berhampur sambalpur 700.00 7:00PM 6:00AM
+sambalpur berhampur 700.00 8:30PM 7:00AM
+bhubaneswar berhampur 200.00 7:00AM 10:30AM
+berhampur bhubaneswar 200.00 5:30PM 9:00PM
+cuttack bhubaneswar 50.00 5:20PM 6:30AM
+bhubaneswar cuttack 50.00 9:00AM 10:15AM
+puri bhubaneswar 75.00 7:15PM 8:30PM 
+bhubaneswar puri 75.00 6:30AM 8:40AM
+bhubaneswar kolkata 1000.00 10:10PM 6:30AM
+kolkata bhubaneswar 1000.00 9:00PM 5:30AM
+bhubaneswar jaipur 1000.00 6:00PM 7:00AM
+jaipur bhubaneswar 1000.00 8:00PM 7:00AM
+bhadrak bhubaneswar 200.00 7:00AM 10:10AM
+bhubaneswar bhadrak 200.00 6:10PM 9:30PM
+bhubaneswar vishakhapatnam 600.00 10:30PM 6:30AM
+vishakhapatnam bhubaneswar 600.00 8:00AM 5:00PM
+bhubaneswar rourkela 500.00 8:00PM 7:00AM
+rourkela bhubaneswar 500.00 10:00pm 8:00AM

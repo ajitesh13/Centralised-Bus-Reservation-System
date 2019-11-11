@@ -265,6 +265,8 @@ inline void Reservations ::Show()
 {
     int cntr20 = 0;
     string s1, s2, s3, s4, s5;
+    string s6, s7, s8, s9, s10;
+    string deptime, arrtime;
     cout << "\n\nEnter your Customer ID:\n\n";
     cin >> str_customer_id;
     cout << "\n\n-------------------------------------------------\n\n";
@@ -274,6 +276,16 @@ inline void Reservations ::Show()
     cin >> str_Arrival_St;
     fstream read;
     read.open("Reservations.txt");
+    fstream time;
+    time.open("Timetables.txt");
+    while(time >> s6 >> s7 >> s8 >> s9 >> s10)
+    {
+        if((s6 == str_Dep_St) & (s7 == str_Arrival_St))
+        {
+            deptime = s9;
+            arrtime = s10;
+        } 
+    }
     while (read >> s1 >> s2 >> s3 >> s4 >> s5)
     {
         if ((s1 == str_customer_id) & (s2 == str_Dep_St) & (s3 == str_Arrival_St))
@@ -281,10 +293,10 @@ inline void Reservations ::Show()
             cout << "\n\n**************************************************************\n"
                  << bold_on << "\t\t\t      " << UNDERLINE << "INDIAN ROADWAYS" << CLOSEUNDERLINE << bold_off << "\n\n"
                  << "\tCustomer ID :" << s1 << "\n\n"
-                 << "\tDep. St. : " << s2 << "\n\n"
-                 << "\tArrival St. : " << s3 << "\n\n"
+                 << "\tDep. St. : " << s2 << "\t\t" << "Departure Time: " << deptime << "\n\n"
+                 << "\tArrival St. : " << s3 << "\t\t" << "Arrival Time: " << arrtime << "\n\n"
                  << "\tNo. of Tickets :" << s4 << "\n\n"
-                 << "\t\t*********************************\n"
+                 << "\t\t---------------------------------\n"
                  << "\n\t\t\tTotal Fare = " << s5 << endl
                  << "\n***************************************************************\n";
             cntr20++;

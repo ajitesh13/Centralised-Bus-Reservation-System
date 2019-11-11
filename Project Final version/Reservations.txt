@@ -1,4 +1,4 @@
 190003	bhubaneswar	sambalpur	3	1500
-190005	bhubaneswar	puri	6	450
+190005	bhubaneswar	puri	8	600
 190001	bhubaneswar	kolkata	8	8000
-190001	bhubaneswar	vishakhapatnam	3	1800
+190009	bhubaneswar	jaipur	15	15000
