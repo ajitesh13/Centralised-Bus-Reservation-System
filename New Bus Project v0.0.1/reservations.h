@@ -32,6 +32,7 @@ public:
     // ModifyReservation Function
     void Deletes();
     // cancel reservation function
+    void Show();
     void Show(string, string, string, int, int, int);
     double CalculateFee(double, int);
     ~Reservations();
@@ -165,7 +166,7 @@ inline void Reservations ::SearchFile_and_Update() //error
         while (reservationsIn >> s1 >> s2 >> s3 >> s4 >> s5)
         {
             reservationsOut.open("temp7.txt", ios ::app);
-            if ((s1 == str_customer_id) & (s2==str_Dep_St) & (s3==str_Arrival_St))
+            if ((s1 == str_customer_id) & (s2 == str_Dep_St) & (s3 == str_Arrival_St))
             {
 
                 reservationsOut << str_customer_id << "\t" << str_Dep_St << "\t" << str_Arrival_St << "\t" << i_No_Tickets
@@ -176,23 +177,23 @@ inline void Reservations ::SearchFile_and_Update() //error
             }
             else
             {
-                reservationsOut << s1 << "\t" << s2 << "\t" << s3 << "\t" << s4 << "\t"  << s5 << "\n";
+                reservationsOut << s1 << "\t" << s2 << "\t" << s3 << "\t" << s4 << "\t" << s5 << "\n";
             }
             reservationsOut.close();
         } // end of while - match4
-    if (count01 == 0)
-    {
-        cout << "\n\nRecord  could not be found!\n\n";
-        remove("temp7.txt");
+        if (count01 == 0)
+        {
+            cout << "\n\nRecord  could not be found!\n\n";
+            remove("temp7.txt");
+        }
+        if (count01 != 0)
+        {
+            remove("Reservations.txt");
+            rename("temp7.txt", "Reservations.txt");
+        }
+        reservationsOut.close();
+        r1.Show(str_customer_id, str_Dep_St, str_Arrival_St, i_No_Tickets, ch, i_total);
     }
-    if (count01 != 0)
-    {
-        remove("Reservations.txt");
-        rename("temp7.txt", "Reservations.txt");
-    }
-    reservationsOut.close();
-    r1.Show(str_customer_id, str_Dep_St, str_Arrival_St, i_No_Tickets, ch, i_total);
-  }
 }
 // cancel Resevations1
 // inline void Reservations::Deletes()
@@ -293,6 +294,43 @@ inline void Reservations ::Show(string customer_id, string Dept_St, string Arriv
          << "\t\t*********************************\n"
          << "\n\t\t\tTotal Fare = " << total << endl
          << "\n***************************************************************\n";
+}
+
+inline void Reservations ::Show()
+{
+    int cntr20=0;
+    string s1, s2, s3, s4, s5;
+    cout << "\n\nEnter your Customer ID:\n\n";
+    cin >> str_customer_id;
+    cout << "\n\n-------------------------------------------------\n\n";
+    cout << "\n\n Depature station\n\n ";
+    cin >> str_Dep_St;
+    cout << "\n\n Arrival station\n\n ";
+    cin >> str_Arrival_St;
+    fstream read;
+    read.open("Reservations.txt");
+    while (read >> s1 >> s2 >> s3 >> s4 >> s5)
+    {
+        if ((s1 == str_customer_id) & (s2 == str_Dep_St) & (s3 == str_Arrival_St))
+        {
+            cout << "\n\n**************************************************************\n"
+                 << bold_on << "\t\t\t      " << UNDERLINE << "INDIAN ROADWAYS" << CLOSEUNDERLINE << bold_off << "\n\n"
+                 << "\tCustomer ID :" << s1 << "\n\n"
+                 << "\tDep. St. : " << s2 << "\n\n"
+                 << "\tArrival St. : " << s3 << "\n\n"
+                 << "\tNo. of Tickets :" << s4 << "\n\n"
+                 << "\t\t*********************************\n"
+                 << "\n\t\t\tTotal Fare = " << s5 << endl
+                 << "\n***************************************************************\n";
+                 cntr20++;
+        }
+    }
+    read.close();
+    if(cntr20==0)
+    {    
+            cout << "\n\n\t\t***Record Not Found!!***"<< endl;
+    }
+    
 }
 
 // Reservations Deconstructor

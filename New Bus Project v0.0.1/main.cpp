@@ -191,14 +191,14 @@ int main()
                 goto mainMenu;
             };
             break;
-                // case 4:
-                // {
-                //     Reservations myr;
-                //     myr.Login();
+                case 4:
+                {
+                    Reservations myr;
+                    myr.Login();
 
-                //     myr.Show();
-                //     goto mainMenu;
-                // }
+                    myr.Show();
+                    goto mainMenu;
+                }
                 break;
             case 5:
                 goto mainMenu;
