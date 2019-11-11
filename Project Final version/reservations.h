@@ -77,9 +77,9 @@ inline Reservations ::Reservations(string customer_id, string DeptSt, string Arr
     ifstream PaymentsRead;
     PaymentsRead.open("Timetables.txt");
     double ch, ticket;
-    string s1, s2;
+    string s1, s2, s3, s4;
     int ot = 0;
-    while (PaymentsRead >> s1 >> s2 >> ch)
+    while (PaymentsRead >> s1 >> s2 >> ch >> s3 >> s4)
     {
         if ((str_Dep_St == s1) & (str_Arrival_St == s2))
         {
@@ -249,14 +249,26 @@ inline void Reservations ::Deletes()
 // Reservations  Show
 inline void Reservations ::Show(string customer_id, string Dept_St, string Arrival_St, int No_Tickets, int Charge, int total)
 {
+    string s6, s7, s8, s9, s10;
+    string deptime, arrtime;
+    fstream time;
+    time.open("Timetables.txt");
+    while(time >> s6 >> s7 >> s8 >> s9 >> s10)
+    {
+        if((s6 == Dept_St) & (s7 == Arrival_St))
+        {
+            deptime = s9;
+            arrtime = s10;
+        } 
+    }
     cout << "\n\n**************************************************************\n"
          << bold_on << "\t\t\t      " << UNDERLINE << "INDIAN ROADWAYS" << CLOSEUNDERLINE << bold_off << "\n\n"
          << "\tCustomer ID :" << customer_id << "\n\n"
-         << "\tDep. St. : " << Dept_St << "\n\n"
-         << "\tArrival St. : " << Arrival_St << "\n\n"
+         << "\tDep. St. : " << Dept_St << "\t" << "Departure Time: " << deptime << "\n\n"
+         << "\tArrival St. : " << Arrival_St << "\t" << "Arrival Time: " << arrtime << "\n\n"
          << "\tNo. of Tickets :" << No_Tickets << "\n\n"
          << "\tCharge for one ticket : " << Charge << "\n\n"
-         << "\t\t*********************************\n"
+         << "\t\t---------------------------------\n"
          << "\n\t\t\tTotal Fare = " << total << endl
          << "\n***************************************************************\n";
 }
@@ -293,8 +305,10 @@ inline void Reservations ::Show()
             cout << "\n\n**************************************************************\n"
                  << bold_on << "\t\t\t      " << UNDERLINE << "INDIAN ROADWAYS" << CLOSEUNDERLINE << bold_off << "\n\n"
                  << "\tCustomer ID :" << s1 << "\n\n"
-                 << "\tDep. St. : " << s2 << "\t\t" << "Departure Time: " << deptime << "\n\n"
-                 << "\tArrival St. : " << s3 << "\t\t" << "Arrival Time: " << arrtime << "\n\n"
+                 << "\tDep. St. : " 
+                 <<setw(20)<< s2 << "\t\t" << "Departure Time: " << deptime << "\n\n"
+                 << "\tArrival St. : " 
+                 << setw(17)<<s3 << "\t\t" << "Arrival Time: " << arrtime << "\n\n"
                  << "\tNo. of Tickets :" << s4 << "\n\n"
                  << "\t\t---------------------------------\n"
                  << "\n\t\t\tTotal Fare = " << s5 << endl
