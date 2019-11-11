@@ -11,8 +11,8 @@ bhubaneswar	puri	40
 bhubaneswar	kolkata	40
 kolkata	bhubaneswar	40
 bhubaneswar	jaipur	40
-jaipur	bhubaneswar	38
-bhadrak	bhubaneswar	40
+jaipur	bhubaneswar	31
+bhadrak	bhubaneswar	32
 bhubaneswar	bhadrak	37
 bhubaneswar	vishakhapatnam	40
 vishakhapatnam	bhubaneswar	40

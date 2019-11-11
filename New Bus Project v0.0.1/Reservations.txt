@@ -1,10 +1,4 @@
-190003	bhubaneswar	sambalpur	4	2000
-190003	bhubaneswar	sambalpur	30	15000
-190003	vishakhapatnam	bhubaneswar	7	4200
+190003	bhubaneswar	sambalpur	5	2500
 190003	sambalpur	berhampur	8	5600
-190005	rourkela	bhubaneswar	3	1500
-190005	jaipur	bhubaneswar	2	2000
-190005	bhubaneswar	bhadrak	3	600
-190005	bhubaneswar	sambalpur	3	1500
-190005	bhubaneswar	sambalpur	3	1500
-190005	bhubaneswar	rourkela	2	1000
+190005	bhubaneswar	puri	6	450
+190001	bhubaneswar	kolkata	8	8000
