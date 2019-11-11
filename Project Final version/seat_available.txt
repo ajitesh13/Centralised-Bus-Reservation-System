@@ -6,7 +6,7 @@ bhubaneswar	berhampur	40
 berhampur	bhubaneswar	40
 cuttack	bhubaneswar	40
 bhubaneswar	cuttack	40
-puri	bhubaneswar	22
+puri	bhubaneswar	34
 bhubaneswar	puri	40
 bhubaneswar	kolkata	40
 kolkata	bhubaneswar	40
@@ -19,13 +19,13 @@ bhubaneswar	berhampur	40
 berhampur	bhubaneswar	40
 cuttack	bhubaneswar	40
 bhubaneswar	cuttack	40
-puri	bhubaneswar	9
+puri	bhubaneswar	13
 bhubaneswar	puri	40
 bhubaneswar	kolkata	40
 kolkata	bhubaneswar	40
 bhubaneswar	jaipur	25
 jaipur	bhubaneswar	31
-bhadrak	bhubaneswar	13
+bhadrak	bhubaneswar	32
 bhubaneswar	bhadrak	37
 bhubaneswar	vishakhapatnam	36
 vishakhapatnam	bhubaneswar	40

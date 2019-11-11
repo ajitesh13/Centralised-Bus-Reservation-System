@@ -1,9 +1,5 @@
 190003	bhubaneswar	sambalpur	3	1500
 190005	bhubaneswar	puri	8	600
-190001	bhubaneswar	kolkata	8	8000
 190009	bhubaneswar	jaipur	15	15000
-190008	bhadrak	bhubaneswar	19	3800
 190008	rourkela	bhubaneswar	3	1500
-190008	puri	bhubaneswar	20	4.68349e-310
-190008	jaipur	bhubaneswar	42	42000
-190008	puri	bhubaneswar	13	975
+190008	puri	bhubaneswar	6	450
