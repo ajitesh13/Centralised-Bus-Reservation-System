@@ -69,6 +69,7 @@ inline Payments ::~Payments() {}
 // Reservations constructor
 inline Reservations ::Reservations(string customer_id, string DeptSt, string ArrivalSt, int NoTickets)
 {
+    int n;
     Reservations r2;
     str_customer_id = customer_id;
     str_Dep_St = DeptSt;
@@ -107,10 +108,14 @@ inline Reservations ::Reservations(string customer_id, string DeptSt, string Arr
             Reservations << str_customer_id << "\t" << str_Dep_St << "\t" << str_Arrival_St << "\t" << i_No_Tickets
                          << "\t" << i_total << "\n";
             Reservations.close();
-            r2.CheckSeatAvailabilty(DeptSt, ArrivalSt, NoTickets);
-            cout << bold_on << "\n\t\t***RESERVATION IS SUCCESSFULL!!***\n"
+            n = r2.CheckSeatAvailabilty(DeptSt, ArrivalSt, NoTickets);
+            if(n==1)
+            {
+                cout << bold_on << "\n\t\t***RESERVATION IS SUCCESSFULL!!***\n"
                  << bold_off << endl;
-            r2.Show(str_customer_id, str_Dep_St, str_Arrival_St, i_No_Tickets, ticket, i_total);
+                r2.Show(str_customer_id, str_Dep_St, str_Arrival_St, i_No_Tickets, ticket, i_total);
+            }
+            
         }
         else
             cout << "\n\n\t***Confirmation Denied***\n";

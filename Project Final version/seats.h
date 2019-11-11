@@ -8,11 +8,11 @@ protected:
     int i_SeatNo;
 
 public:
-    void CheckSeatAvailabilty(string DepSt, string ArrSt, int nt);
+    int CheckSeatAvailabilty(string DepSt, string ArrSt, int nt);
 };
 
 // Seats - CheckSeatAvailability
-inline void Seats ::CheckSeatAvailabilty(string DepSt, string ArrSt, int nt)
+inline int Seats ::CheckSeatAvailabilty(string DepSt, string ArrSt, int nt)
 {
     int seats, cntr=0;
     ifstream SeatAvailbility;
@@ -28,7 +28,7 @@ inline void Seats ::CheckSeatAvailabilty(string DepSt, string ArrSt, int nt)
             if(seats < 0)
             {
                 cout << "\n\n\n****SORRY! THIS RESERVATION IS NOT POSSIBLE****\n\n\n" << endl;
-                exit(1);
+                return(0);
             }   
             seat_update << DepSt << "\t" << ArrSt << "\t" << seats << "\n";
             cntr++;
@@ -48,6 +48,7 @@ inline void Seats ::CheckSeatAvailabilty(string DepSt, string ArrSt, int nt)
     {
         remove("seat_available.txt");
         rename("temp11.txt", "seat_available.txt");
+        return(1);
     }
 
 } 

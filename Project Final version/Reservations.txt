@@ -4,4 +4,6 @@
 190009	bhubaneswar	jaipur	15	15000
 190008	bhadrak	bhubaneswar	19	3800
 190008	rourkela	bhubaneswar	3	1500
-190008	puri	bhubaneswar	18	1350
+190008	puri	bhubaneswar	20	4.68349e-310
+190008	jaipur	bhubaneswar	42	42000
+190008	puri	bhubaneswar	13	975
