@@ -12,7 +12,7 @@ int main()
     try
     {
     mainMenu:
-        cout << "\n\n\t\t\t   " << UNDERLINE <<bold_on<< "WELCOME TO INDIAN ROADWAYS"<<bold_off << CLOSEUNDERLINE << "\n\n";
+        cout << "\n\n\t\t\t   " << UNDERLINE << bold_on << "WELCOME TO INDIAN ROADWAYS" << bold_off << CLOSEUNDERLINE << "\n\n";
         cout << "\n\n\t\t\t\t1.Customer\n\n"
              << "\t\t\t\t2.Reservation\n\n"
              << "\t\t\t\t3.Exit\n\n"
@@ -61,7 +61,7 @@ int main()
             {
 
                 cout << "========================================================================================\n";
-                cout << "\t\t\t" << UNDERLINE <<bold_on<< "REGISTER HERE!!"<<bold_off << CLOSEUNDERLINE << "\n\n";
+                cout << "\t\t\t" << UNDERLINE << bold_on << "REGISTER HERE!!" << bold_off << CLOSEUNDERLINE << "\n\n";
                 cout << "\t(Please fill in this information for the Registration)\n";
                 cout << "Note: All entries in the form should be of one word and should not contain spaces.";
                 cout << "\n\nPassenger Name:\n\n";
@@ -69,8 +69,14 @@ int main()
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cout << "\n\nPassenger City:\n\n ";
                 cin >> City;
+            contact:
                 cout << "\n\nPassenger : Contact No\n\n ";
                 cin >> ContactNumber;
+                if (ContactNumber.size() > 10 || ContactNumber.size() < 10)
+                {
+                    cout << "\n\t\t!!!!Please Enter Valid Contact Number:!!!!" << endl;
+                    goto contact;
+                }
                 cout << "\n\nPassenger : UserName \n\n ";
                 cin >> UserName;
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -79,16 +85,15 @@ int main()
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 //make the password protective
                 customer_id = (gen_id());
-                cout << "\nYour Customer ID is: " <<bold_on<< customer_id<< bold_off << endl;
-                cout << "Remember this for login and other future purposes.\n"<< endl;
+                cout << "\n\t\tYour Customer ID is: " << bold_on << customer_id << bold_off << endl;
+                cout << "\tRemember this for login and other future purposes.\n"
+                     << endl;
                 Passenger P1(name, customer_id, City, ContactNumber, UserName, Password);
                 goto mainMenu;
-
             }; // Sub  choice first case
             break;
             case 2:
             {
-
                 Passenger P2;
                 if (P2.Login())
                 {
@@ -191,19 +196,19 @@ int main()
                 goto mainMenu;
             };
             break;
-                case 4:
-                {
-                    Reservations myr;
-                    myr.Login();
+            case 4:
+            {
+                Reservations myr;
+                myr.Login();
 
-                    myr.Show();
-                    goto mainMenu;
-                }
-                break;
+                myr.Show();
+                goto mainMenu;
+            }
+            break;
             case 5:
                 goto mainMenu;
                 break;
-            } // second sub switch end  
+            } // second sub switch end
         };
         break;
         case 3:
@@ -223,15 +228,17 @@ int main()
 }
 
 //generates a unique customer_id
-string gen_id(){
-    long long x =190000;
+string gen_id()
+{
+    long long x = 190000;
     string line;
-    /* Creating input filestream */ 
+    /* Creating input filestream */
     ifstream file("Passenger.txt");
     string s1, s2, s3, s4, s5, s6, id;
-    while (file >>  s1 >> s2 >> s3 >> s4 >> s5 >> s6){
+    while (file >> s1 >> s2 >> s3 >> s4 >> s5 >> s6)
+    {
         x = stoll(s1);
     }
-    id = to_string(x+1);
+    id = to_string(x + 1);
     return id;
 }
