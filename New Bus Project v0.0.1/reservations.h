@@ -102,8 +102,11 @@ inline Reservations ::Reservations(string customer_id, string DeptSt, string Arr
         if (confirmation == 'y')
         {
             fstream Reservations;
+            fstream Seats;
             string line;
             Reservations.open("Reservations.txt", ios ::app | ios ::out | ios ::ate | ios ::in);
+            Seats.open("Seat.txt", ios ::app | ios ::out | ios ::ate | ios ::in);
+            Seats << str_customer_id << "\t" << i_No_Tickets << "\n";
             Reservations << str_customer_id << "\t" << str_Dep_St << "\t" << str_Arrival_St << "\t" << i_No_Tickets
                          << "\t" << i_total << "\n";
             Reservations.close();
@@ -118,29 +121,35 @@ inline Reservations ::Reservations(string customer_id, string DeptSt, string Arr
 }
 
 // modify Reservation function
-inline void Reservations ::SearchFile_and_Update()
+inline void Reservations ::SearchFile_and_Update() //error
 {
     count01 = 0;
     Reservations r1;
     double ch;
     char confirmation;
+    int s7;
     ifstream reservationsIn;
+    //ifstream seatsIn;
     fstream reservationsOut;
+    //fstream seatsOut;
     cout << "\n\nConfirm the You wants to modify reservation(Y/N): \n\n";
     cin >> confirmation;
     confirmation = tolower(confirmation);
     if (confirmation == 'y')
     {
+        // TimeTables T1;
         Payments P1;
+        // T1.Show();
         P1.Show();
+        cout << "\n\n-------------------------------------------------\n\n";
         cout << "\n\nEnter your Customer ID:\n\n";
         cin >> str_customer_id;
         cout << "\n\n-------------------------------------------------\n\n";
-        cout << "\n\nDepature station\n\n ";
+        cout << "\n\n New Depature station\n\n ";
         cin >> str_Dep_St;
-        cout << "\n\n Arrival station\n\n ";
+        cout << "\n\n New Arrival station\n\n ";
         cin >> str_Arrival_St;
-        cout << "\n\nEnter New  No. of Tickets\n\n ";
+        cout << "\n\nNew  No. of Tickets\n\n ";
         cin >> i_No_Tickets;
         fstream PaymentsRead;
         PaymentsRead.open("Timetables.txt", ios ::in);
@@ -153,6 +162,7 @@ inline void Reservations ::SearchFile_and_Update()
             }
         }
         reservationsIn.open("Reservations.txt");
+        //seatsIn.open("Seats.txt");
         while (reservationsIn >> s1 >> s2 >> s3 >> s4 >> s5)
         {
             reservationsOut.open("temp7.txt", ios ::app);
@@ -161,8 +171,8 @@ inline void Reservations ::SearchFile_and_Update()
 
                 reservationsOut << str_customer_id << "\t" << str_Dep_St << "\t" << str_Arrival_St << "\t" << i_No_Tickets
                                 << "\t" << i_total << "\n";
-                cout << "\n\t\tRecord found & updated!\n\n";
-                cout << "\n-------------------------------------------------\n";
+                cout << "\n\n\t\tRecord found & updated!\n\n";
+                cout << "\n\n-------------------------------------------------\n\n";
                 count01++;
             }
             else
@@ -170,26 +180,62 @@ inline void Reservations ::SearchFile_and_Update()
                 reservationsOut << s1 << "\t" << s2 << "\t" << s3 << "\t" << s4 << "\t" << s5 << "\n";
             }
             reservationsOut.close();
-        } // end of while
+        } // end of while - match4
         if (count01 == 0)
         {
-            cout << "\n\n\t\tSorry, Record could not be found!\n\n";
+            cout << "\n\nRecord  could not be found!\n\n";
             remove("temp7.txt");
         }
-        else if (count01 != 0)
+        if (count01 != 0)
         {
             remove("Reservations.txt");
             rename("temp7.txt", "Reservations.txt");
-            r1.Show(str_customer_id, str_Dep_St, str_Arrival_St, i_No_Tickets, ch, i_total);
         }
         reservationsOut.close();
-    }
-    else
-    {
-        cout << "\n\t\t***Confirmation Denied!!***\n"
-             << endl;
+        r1.Show(str_customer_id, str_Dep_St, str_Arrival_St, i_No_Tickets, ch, i_total);
     }
 }
+// cancel Resevations1
+// inline void Reservations::Deletes()
+// {
+//     string customer_id, Depst, Arrst, ns, cost;
+//     int cntr19=0;
+//     cout << "\n\nEnter Your Departure Station: ";
+//     cin >> str_Arrival_St;
+//     cout << "\n\nEnter Your Arrival Station: ";
+//     cin >> str_Dep_St;
+//     fstream deleteR;
+//     ofstream df;
+//     deleteR.open("Reservations.txt", ios::in);
+
+//     while(deleteR >> customer_id >> Depst >> Arrst >> ns >> cost)
+//     {
+
+//         df.open("temp15.txt", ios::out | ios::app);
+//         if(Depst != str_Dep_St & Arrst != str_Arrival_St)
+//         {
+//                 df << customer_id << "\t" << Depst << "\t"
+//                 << Arrst << "\t" << ns << "\t" << cost << "\n";
+//         }
+//         else
+//         {
+//                 cntr19++;
+//         }
+//         df.close();
+//     }
+//     deleteR.close();
+//     if(cntr19 == 0)
+//     {
+//         remove("temp15.txt");
+//         cout << "\n\nRecord Not Found!\n\n";
+//     }
+//     else if(cntr19 > 0)
+//     {
+//         remove("Reservations.txt");
+//         rename("temp15.txt", "Reservations.txt");
+//         cout << "\n\nreservation Successfully Deleted!\n";
+//     }
+// }
 
 //cancel Reservations0
 inline void Reservations ::Deletes()
@@ -208,45 +254,34 @@ inline void Reservations ::Deletes()
         cout << "\n\n-------------------------------------------------\n\n";
         cout << "\n\nEnter your Customer ID :\n\n";
         cin >> str_customer_id;
-        cout << "\n\nDepature station\n\n ";
-        cin >> str_Dep_St;
-        cout << "\n\n Arrival station\n\n ";
-        cin >> str_Arrival_St;
         cout << "\n\n-------------------------------------------------\n\n";
         ResIn.open("Reservations.txt");
         ResOut.open("temp5.txt", ios ::app);
         while (ResIn >> customer_id >> dept >> arr >> nt >> tot)
         {
-            if ((customer_id == str_customer_id) & (dept == str_Dep_St) & (arr == str_Arrival_St))
-            {
-            }
-            else
+            if (customer_id != str_customer_id)
             {
                 ResOut << customer_id << "\t" << dept << "\t" << arr << "\t" << nt << "\t" << tot << "\n";
                 cntr5++;
             }
         }
-        ResOut.close();
-        if (cntr5 == 0)
-        {
-            cout << "\n\nRecord  could not be found!\n\n";
-            remove("temp5.txt");
-        }
-        else if (cntr5 > 0)
-        {
-            remove("Reservations.txt");
-            rename("temp5.txt", "Reservations.txt");
-            cout << "\n\n\t***Your Reservation Cancelled Successfully!!***\n\n";
-        }
-        ResIn.close();
     }
-    else
+    ResOut.close();
+    if (cntr5 == 0)
     {
-        cout << "\n\t\t***confirmation denied!!***" << endl;
+        cout << "\n\nRecord  could not be found!\n\n";
+        remove("temp5.txt");
     }
+    else if (cntr5 > 0)
+    {
+        remove("Reservations.txt");
+        rename("temp5.txt", "Reservations.txt");
+        cout << "\n\n\t***Your Reservation Cancelled Successfully!!***\n\n";
+    }
+    ResIn.close();
 }
 
-// Reservations  Show
+// Reservations - Show
 inline void Reservations ::Show(string customer_id, string Dept_St, string Arrival_St, int No_Tickets, int Charge, int total)
 {
     cout << "\n\n**************************************************************\n"
@@ -263,10 +298,8 @@ inline void Reservations ::Show(string customer_id, string Dept_St, string Arriv
 
 inline void Reservations ::Show()
 {
-    int cntr20 = 0;
+    int cntr20=0;
     string s1, s2, s3, s4, s5;
-    string s6, s7, s8, s9, s10;
-    string deptime, arrtime;
     cout << "\n\nEnter your Customer ID:\n\n";
     cin >> str_customer_id;
     cout << "\n\n-------------------------------------------------\n\n";
@@ -276,16 +309,6 @@ inline void Reservations ::Show()
     cin >> str_Arrival_St;
     fstream read;
     read.open("Reservations.txt");
-    fstream time;
-    time.open("Timetables.txt");
-    while(time >> s6 >> s7 >> s8 >> s9 >> s10)
-    {
-        if((s6 == str_Dep_St) & (s7 == str_Arrival_St))
-        {
-            deptime = s9;
-            arrtime = s10;
-        } 
-    }
     while (read >> s1 >> s2 >> s3 >> s4 >> s5)
     {
         if ((s1 == str_customer_id) & (s2 == str_Dep_St) & (s3 == str_Arrival_St))
@@ -293,23 +316,24 @@ inline void Reservations ::Show()
             cout << "\n\n**************************************************************\n"
                  << bold_on << "\t\t\t      " << UNDERLINE << "INDIAN ROADWAYS" << CLOSEUNDERLINE << bold_off << "\n\n"
                  << "\tCustomer ID :" << s1 << "\n\n"
-                 << "\tDep. St. : " << s2 << "\t\t" << "Departure Time: " << deptime << "\n\n"
-                 << "\tArrival St. : " << s3 << "\t\t" << "Arrival Time: " << arrtime << "\n\n"
+                 << "\tDep. St. : " << s2 << "\n\n"
+                 << "\tArrival St. : " << s3 << "\n\n"
                  << "\tNo. of Tickets :" << s4 << "\n\n"
-                 << "\t\t---------------------------------\n"
+                 << "\t\t*********************************\n"
                  << "\n\t\t\tTotal Fare = " << s5 << endl
                  << "\n***************************************************************\n";
-            cntr20++;
+                 cntr20++;
         }
     }
     read.close();
-    if (cntr20 == 0)
-    {
-        cout << "\n\n\t\t***Record Not Found!!***" << endl;
+    if(cntr20==0)
+    {    
+            cout << "\n\n\t\t***Record Not Found!!***"<< endl;
     }
+    
 }
 
-// Reservations Destructor
+// Reservations Deconstructor
 inline Reservations ::~Reservations() {}
 
 // Payments Calculate

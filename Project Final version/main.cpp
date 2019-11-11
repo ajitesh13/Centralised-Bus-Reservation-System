@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 #include "reservations.h"
-#define UNDERLINE "\033[4m"
+#define UNDERLINE "\033[33;4m"
 #define CLOSEUNDERLINE "\033[0m"
 using namespace std;
 string gen_id();
