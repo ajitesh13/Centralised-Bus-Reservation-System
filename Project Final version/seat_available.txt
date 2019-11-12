@@ -6,7 +6,7 @@ bhubaneswar	berhampur	40
 berhampur	bhubaneswar	40
 cuttack	bhubaneswar	40
 bhubaneswar	cuttack	40
-puri	bhubaneswar	22
+puri	bhubaneswar	16
 bhubaneswar	puri	40
 bhubaneswar	kolkata	40
 kolkata	bhubaneswar	40

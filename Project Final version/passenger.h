@@ -1,6 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 int count01;
+//text bold
+ostream &bold_on(ostream &os)
+{
+    return os << "\e[1m";
+}
+
+ostream &bold_off(ostream &os)
+{
+    return os << "\e[0m";
+}
 
 // class Passenger
 class Passenger
@@ -78,7 +88,7 @@ inline void Passenger::Deletes()
 inline void Passenger ::SearchFile_and_Update()
 {
     string customer_id, name, city, username, password, cn;
-    cout << "\n\n-------------------------------------------------\n\n";
+    cout << "\n\n--------------------------------------------------------------------------------\n\n";
     cout << "\n\nEnter your Customer ID :\n\n";
     cin >> str_customer_id;
     ifstream PassengerIn;
@@ -91,7 +101,7 @@ inline void Passenger ::SearchFile_and_Update()
         if (customer_id == str_customer_id)
         {
             cout << "\n\nRecord found!\n\n";
-            cout << "\n\n-------------------------------------------------\n\n";
+            cout << "\n\n--------------------------------------------------------------------------------\n\n";
             cout << "\n\nNew Passenger Name:\n\n ";
             cin >> str_name;
             cout << "\n\nNew Passenger City:\n\n "; //address change to city
@@ -125,7 +135,7 @@ inline void Passenger ::SearchFile_and_Update()
     {
         remove("Passenger.txt");
         rename("temp1.txt", "Passenger.txt");
-        cout<<"MODIFIED SUCCESSFULLY!!\n";
+        cout<<bold_on<<"MODIFIED SUCCESSFULLY!!\n"<<bold_off;
     }
 }
 
@@ -134,8 +144,8 @@ inline bool Passenger ::Login()
 {
     long long x=0; //to detect correct username and password for login
     string username01, password01;
-    cout << "==============================================================================="
-         << "\n\n\t\t\t\tLogin Screen\n\n"
+    cout << "===================================================================================="
+         << "\n\n\t\t\t\t"<<bold_on << "LOGIN SCREEN"<< bold_off<<"\n\n"
          << "Enter your UserName:\n\n";
     cin >> username01;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');

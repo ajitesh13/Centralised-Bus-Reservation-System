@@ -36,7 +36,7 @@ int main()
         {
         subMenu:
 
-            cout << "============================================================================================\n"
+            cout << "===================================================================================\n"
                  << "\n\n\t\t\t\t1.Register\n\n"
                  << "\t\t\t\t2.Modify\n\n"
                  << "\t\t\t\t3.Remove Account\n\n"
@@ -60,7 +60,7 @@ int main()
             case 1:
             {
 
-                cout << "========================================================================================\n";
+                cout << "===================================================================================\n";
                 cout << "\t\t\t" << UNDERLINE << bold_on << "REGISTER HERE!!" << bold_off << CLOSEUNDERLINE << "\n\n";
                 cout << "\t(Please fill in this information for the Registration)\n";
                 cout << "Note: All entries in the form should be of one word and should not contain spaces.";
@@ -123,7 +123,7 @@ int main()
         {
         subMenu2:
             int subChoice2;
-            cout << "================================================================================"
+            cout << "===================================================================================="
                  << "\n\n\t\t\t\t1.Make a Reservation\n\n"
                  << "\t\t\t\t2.Modify Reservation\n\n"
                  << "\t\t\t\t3.Cancel Reservation\n\n"

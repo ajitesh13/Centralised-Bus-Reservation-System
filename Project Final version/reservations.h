@@ -5,16 +5,7 @@
 #define CLOSEUNDERLINE "\033[0m"
 
 using namespace std;
-//text bold
-ostream &bold_on(ostream &os)
-{
-    return os << "\e[1m";
-}
 
-ostream &bold_off(ostream &os)
-{
-    return os << "\e[0m";
-}
 
 // class Reservations
 class Reservations : public Passenger, public Seats
@@ -90,7 +81,7 @@ inline Reservations ::Reservations(string customer_id, string DeptSt, string Arr
     }
     if (ot != 1)
     {
-        cout << "\tSorry!No bus found on your searched route\n"
+        cout << "\t\tSorry!! No bus found on your searched route\n"
              << endl;
     }
     else if (ot >= 0)
@@ -113,7 +104,7 @@ inline Reservations ::Reservations(string customer_id, string DeptSt, string Arr
             r2.Show(str_customer_id, str_Dep_St, str_Arrival_St, i_No_Tickets, ticket, i_total);
         }
         else
-            cout << "\n\n\t***Confirmation Denied***\n";
+            cout << "\n\n\t\t***Confirmation Denied***\n";
     }
 }
 
@@ -126,7 +117,7 @@ inline void Reservations ::SearchFile_and_Update()
     char confirmation;
     ifstream reservationsIn;
     fstream reservationsOut;
-    cout << "\n\nConfirm the You wants to modify reservation(Y/N): \n\n";
+    cout << "\n\nConfirm that you want to modify reservation(Y/N): \n\n";
     cin >> confirmation;
     confirmation = tolower(confirmation);
     if (confirmation == 'y')
@@ -135,8 +126,8 @@ inline void Reservations ::SearchFile_and_Update()
         P1.Show();
         cout << "\n\nEnter your Customer ID:\n\n";
         cin >> str_customer_id;
-        cout << "\n\n-------------------------------------------------\n\n";
-        cout << "\n\nDepature station\n\n ";
+        cout << "\n\n--------------------------------------------------------------------------------\n\n";
+        cout << "\n\nDeparture station\n\n ";
         cin >> str_Dep_St;
         cout << "\n\n Arrival station\n\n ";
         cin >> str_Arrival_St;
@@ -161,8 +152,8 @@ inline void Reservations ::SearchFile_and_Update()
 
                 reservationsOut << str_customer_id << "\t" << str_Dep_St << "\t" << str_Arrival_St << "\t" << i_No_Tickets
                                 << "\t" << i_total << "\n";
-                cout << "\n\t\tRecord found & updated!\n\n";
-                cout << "\n-------------------------------------------------\n";
+                cout << "\n\t\tRecord found & updated successfully!\n\n";
+                cout << "\n----------------------------------------------------------------------------------\n";
                 count01++;
             }
             else
@@ -200,19 +191,19 @@ inline void Reservations ::Deletes()
     int nt, tot;
     ifstream ResIn;
     ofstream ResOut;
-    cout << "\n\nConfirm to Cancel The Reservations of your Customer ID (y/n): \n\n";
+    cout << "\n\nConfirm to"<<bold_on<< "Cancel"<<bold_off<<" the Reservation of your Customer ID (y/n): \n\n";
     cin >> confirmation;
     confirmation = tolower(confirmation);
     if (confirmation == 'y')
     {
-        cout << "\n\n-------------------------------------------------\n\n";
+        cout << "\n\n--------------------------------------------------------------------------------\n\n";
         cout << "\n\nEnter your Customer ID :\n\n";
         cin >> str_customer_id;
         cout << "\n\nDepature station\n\n ";
         cin >> str_Dep_St;
         cout << "\n\n Arrival station\n\n ";
         cin >> str_Arrival_St;
-        cout << "\n\n-------------------------------------------------\n\n";
+        cout << "\n\n--------------------------------------------------------------------------------\n\n";
         ResIn.open("Reservations.txt");
         ResOut.open("temp5.txt", ios ::app);
         while (ResIn >> customer_id >> dept >> arr >> nt >> tot)
@@ -236,13 +227,13 @@ inline void Reservations ::Deletes()
         {
             remove("Reservations.txt");
             rename("temp5.txt", "Reservations.txt");
-            cout << "\n\n\t***Your Reservation Cancelled Successfully!!***\n\n";
+            cout << "\n\n\t\t***Your Reservation Cancelled Successfully!!***\n\n";
         }
         ResIn.close();
     }
     else
     {
-        cout << "\n\t\t***confirmation denied!!***" << endl;
+        cout << "\n\t\t***Confirmation Denied!!***" << endl;
     }
 }
 
@@ -261,18 +252,18 @@ inline void Reservations ::Show(string customer_id, string Dept_St, string Arriv
             arrtime = s10;
         } 
     }
-    cout << "\n\n**************************************************************\n"
-         << bold_on << "\t\t\t      " << UNDERLINE << "INDIAN ROADWAYS" << CLOSEUNDERLINE << bold_off << "\n\n"
-         << "\tCustomer ID :" << customer_id << "\n\n"
-         << "\tDep. St. : " 
+    cout << "\n\n\t**************************************************************\n"
+         << bold_on << "\t\t\t\t      " << UNDERLINE << "INDIAN ROADWAYS" << CLOSEUNDERLINE << bold_off << "\n\n"
+         << "\t\tCustomer ID :" << customer_id << "\n\n"
+         << "\t\tDep. St. : " 
          << left<< setw(20)<< Dept_St<< "\t" << "Departure Time: " << deptime << "\n\n"
-         << "\tArrival St. : " 
+         << "\t\tArrival St. : " 
          << left<< setw(17)<< Arrival_St << "\t" << "Arrival Time: " << arrtime << "\n\n"
-         << "\tNo. of Tickets :" << No_Tickets << "\n\n"
-         << "\tCharge for one ticket : " << Charge << "\n\n"
-         << "\t\t---------------------------------\n"
-         << "\n\t\t\tTotal Fare = " << total << endl
-         << "\n***************************************************************\n";
+         << "\t\tNo. of Tickets :" << No_Tickets << "\n\n"
+         << "\t\tCharge for one ticket : " << Charge << "\n\n"
+         << "\t\t\t---------------------------------\n"
+         << bold_on<< "\n\t\t\t\tTotal Fare = " << total <<bold_off<< "\n"
+         << "\n\t***************************************************************\n";
 }
 
 inline void Reservations ::Show()
@@ -283,7 +274,7 @@ inline void Reservations ::Show()
     string deptime, arrtime;
     cout << "\n\nEnter your Customer ID:\n\n";
     cin >> str_customer_id;
-    cout << "\n\n-------------------------------------------------\n\n";
+    cout << "\n\n-----------------------------------------------------------------------------------\n\n";
     cout << "\n\n Depature station\n\n ";
     cin >> str_Dep_St;
     cout << "\n\n Arrival station\n\n ";
@@ -304,17 +295,17 @@ inline void Reservations ::Show()
     {
         if ((s1 == str_customer_id) & (s2 == str_Dep_St) & (s3 == str_Arrival_St))
         {
-            cout << "\n\n**************************************************************\n"
-                 << bold_on << "\t\t\t      " << UNDERLINE << "INDIAN ROADWAYS" << CLOSEUNDERLINE << bold_off << "\n\n"
-                 << "\tCustomer ID :" << s1 << "\n\n"
-                 << "\tDep. St. : " 
+            cout << "\n\n\t**********************************************************************\n"
+                 << bold_on << "\t\t\t\t    " << UNDERLINE << "INDIAN ROADWAYS" << CLOSEUNDERLINE << bold_off << "\n\n"
+                 << "\t\tCustomer ID :" << s1 << "\n\n"
+                 << "\t\tDep. St. : " 
                  << left<< setw(20)<< s2 << "\t" << "Departure Time: " << deptime << "\n\n"
-                 << "\tArrival St. : " 
+                 << "\t\tArrival St. : " 
                  << left<< setw(17)<<s3 << "\t" << "Arrival Time: " << arrtime << "\n\n"
-                 << "\tNo. of Tickets :" << s4 << "\n\n"
-                 << "\t\t---------------------------------\n"
-                 << "\n\t\t\tTotal Fare = " << s5 << endl
-                 << "\n***************************************************************\n";
+                 << "\t\tNo. of Tickets :" << s4 << "\n\n"
+                 << "\t\t\t---------------------------------\n"
+                 << bold_on<<"\n\t\t\t\tTotal Fare = " << s5 <<bold_off<< "\n"
+                 << "\n\t***********************************************************************\n";
             cntr20++;
         }
     }
