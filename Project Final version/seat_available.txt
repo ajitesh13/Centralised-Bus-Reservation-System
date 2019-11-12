@@ -6,13 +6,30 @@ bhubaneswar	berhampur	40
 berhampur	bhubaneswar	40
 cuttack	bhubaneswar	40
 bhubaneswar	cuttack	40
+<<<<<<< HEAD
 puri	bhubaneswar	16
+=======
+puri	bhubaneswar	34
+>>>>>>> c12a1dbbd25d1be479953be52b9564374dffcf87
 bhubaneswar	puri	40
 bhubaneswar	kolkata	40
-kolkata	bhubaneswar	40
+kolkata	bhubaneswar	25
+bhubaneswar	jaipur	25
+bhubaneswar	sambalpur	34
+sambalpur	bhubaneswar	40
+berhampur	sambalpur	40
+sambalpur	berhampur	40
+bhubaneswar	berhampur	40
+berhampur	bhubaneswar	40
+cuttack	bhubaneswar	40
+bhubaneswar	cuttack	40
+puri	bhubaneswar	13
+bhubaneswar	puri	40
+bhubaneswar	kolkata	40
+kolkata	bhubaneswar	25
 bhubaneswar	jaipur	25
 jaipur	bhubaneswar	31
-bhadrak	bhubaneswar	13
+bhadrak	bhubaneswar	32
 bhubaneswar	bhadrak	37
 bhubaneswar	vishakhapatnam	36
 vishakhapatnam	bhubaneswar	40

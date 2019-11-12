@@ -87,6 +87,7 @@ inline void Passenger::Deletes()
 // Search file and update
 inline void Passenger ::SearchFile_and_Update()
 {
+    count01 = 0;
     string customer_id, name, city, username, password, cn;
     cout << "\n\n--------------------------------------------------------------------------------\n\n";
     cout << "\n\nEnter your Customer ID :\n\n";
@@ -96,7 +97,6 @@ inline void Passenger ::SearchFile_and_Update()
     PassengerIn.open("Passenger.txt");
     while (PassengerIn >> customer_id >> name >> city >> cn >> username >> password)
     {
-        count01 = 0;
         writeFile.open("temp1.txt", ios ::app);
         if (customer_id == str_customer_id)
         {
@@ -104,10 +104,18 @@ inline void Passenger ::SearchFile_and_Update()
             cout << "\n\n--------------------------------------------------------------------------------\n\n";
             cout << "\n\nNew Passenger Name:\n\n ";
             cin >> str_name;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "\n\nNew Passenger City:\n\n "; //address change to city
             cin >> str_City;
-            cout << "\n\nNew Passenger : Contact No\n\n ";
-            cin >> str_ContactNumber;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+             contact:
+                cout << "\n\nNew Passenger : Contact No\n\n ";
+                getline(cin,str_ContactNumber);
+                if (str_ContactNumber.size() > 10 || str_ContactNumber.size() < 10)
+                {
+                    cout << "\n\t\t!!!!Please Enter Valid Contact Number:!!!!" << endl;
+                    goto contact;
+                }
             cout << "\n\nNew Passenger : UserName \n\n ";
             cin >> str_UserName;
             cout << "\n\nNew Passenger : Password\n\n ";
@@ -117,7 +125,7 @@ inline void Passenger ::SearchFile_and_Update()
                       << "\t" << str_Password << "\n";
             count01++;
         }
-        else
+        else 
         {
             writeFile << customer_id << "\t" << name << "\t" << city << "\t"
                       << cn << "\t" << username

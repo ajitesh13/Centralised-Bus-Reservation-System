@@ -25,7 +25,7 @@ int main()
                 throw 11;
             }
         }
-        catch (int x)
+        catch (int x) 
         {
             cout << "\n\n Please select a Relevant Number from the menu \n\n";
             return main();
@@ -69,6 +69,7 @@ int main()
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cout << "\n\nPassenger City:\n\n ";
                 cin >> City;
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
             contact:
                 cout << "\n\nPassenger : Contact No\n\n ";
                 cin >> ContactNumber;
@@ -136,6 +137,7 @@ int main()
                 if ((subChoice2 != 1) & (subChoice2 != 2) & (subChoice2 != 3) & (subChoice2 != 4) & (subChoice2 != 5))
                 {
                     throw 13;
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 }
             }
             catch (int y)
@@ -163,8 +165,10 @@ int main()
                     string search1, search2;
                     cout << "\n\n Enter Your Depature station\n\n ";
                     cin >> DepSt;
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     cout << "\n\n Enter Your Arrival station\n\n ";
                     cin >> ArrSt;
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     cout << "\n\nNo. of Tickets\n\n ";
                     cin >> nt;
                     Reservations R2(customer_id, DepSt, ArrSt, nt);

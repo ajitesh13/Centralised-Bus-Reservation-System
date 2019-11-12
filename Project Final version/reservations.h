@@ -60,6 +60,7 @@ inline Payments ::~Payments() {}
 // Reservations constructor
 inline Reservations ::Reservations(string customer_id, string DeptSt, string ArrivalSt, int NoTickets)
 {
+    int n;
     Reservations r2;
     str_customer_id = customer_id;
     str_Dep_St = DeptSt;
@@ -94,14 +95,18 @@ inline Reservations ::Reservations(string customer_id, string DeptSt, string Arr
         {
             fstream Reservations;
             string line;
-            Reservations.open("Reservations.txt", ios ::app | ios ::out | ios ::ate | ios ::in);
-            Reservations << str_customer_id << "\t" << str_Dep_St << "\t" << str_Arrival_St << "\t" << i_No_Tickets
-                         << "\t" << i_total << "\n";
-            Reservations.close();
-            r2.CheckSeatAvailabilty(DeptSt, ArrivalSt, NoTickets);
-            cout << bold_on << "\n\t\t***RESERVATION IS SUCCESSFULL!!***\n"
-                 << bold_off << endl;
-            r2.Show(str_customer_id, str_Dep_St, str_Arrival_St, i_No_Tickets, ticket, i_total);
+
+            n = r2.CheckSeatAvailabilty(DeptSt, ArrivalSt, NoTickets);
+            if (n == 1)
+            {
+                Reservations.open("Reservations.txt", ios ::app | ios ::out | ios ::ate | ios ::in);
+                Reservations << str_customer_id << "\t" << str_Dep_St << "\t" << str_Arrival_St << "\t" << i_No_Tickets
+                             << "\t" << i_total << "\n";
+                Reservations.close();
+                cout << bold_on << "\n\t\t***RESERVATION IS SUCCESSFULL!!***\n"
+                     << bold_off << endl;
+                r2.Show(str_customer_id, str_Dep_St, str_Arrival_St, i_No_Tickets, ticket, i_total);
+            }
         }
         else
             cout << "\n\n\t\t***Confirmation Denied***\n";
@@ -111,6 +116,7 @@ inline Reservations ::Reservations(string customer_id, string DeptSt, string Arr
 // modify Reservation function
 inline void Reservations ::SearchFile_and_Update()
 {
+    int new_ticket_no;
     count01 = 0;
     Reservations r1;
     double ch;
@@ -122,21 +128,30 @@ inline void Reservations ::SearchFile_and_Update()
     confirmation = tolower(confirmation);
     if (confirmation == 'y')
     {
+
         Payments P1;
         P1.Show();
         cout << "\n\nEnter your Customer ID:\n\n";
         cin >> str_customer_id;
+<<<<<<< HEAD
         cout << "\n\n--------------------------------------------------------------------------------\n\n";
         cout << "\n\nDeparture station\n\n ";
+=======
+        cout << "\n\nDepature station\n\n ";
+>>>>>>> c12a1dbbd25d1be479953be52b9564374dffcf87
         cin >> str_Dep_St;
+         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << "\n\n Arrival station\n\n ";
         cin >> str_Arrival_St;
+         cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "\n\n-------------------------------------------------\n\n";
         cout << "\n\nEnter New  No. of Tickets\n\n ";
-        cin >> i_No_Tickets;
+        cin >> i_No_Tickets; //new no of tickets
         fstream PaymentsRead;
+
         PaymentsRead.open("Timetables.txt", ios ::in);
-        string s1, s2, s3, s4, s5, s6;
-        while (PaymentsRead >> s1 >> s2 >> ch)
+        string s1, s2, s3, s4, s5, s6, s7, s8;
+        while (PaymentsRead >> s1 >> s2 >> ch >> s7 >> s8)
         {
             if ((str_Dep_St == s1) & (str_Arrival_St == s2))
             {
@@ -149,13 +164,27 @@ inline void Reservations ::SearchFile_and_Update()
             reservationsOut.open("temp7.txt", ios ::app);
             if ((s1 == str_customer_id) & (s2 == str_Dep_St) & (s3 == str_Arrival_St))
             {
+<<<<<<< HEAD
 
                 reservationsOut << str_customer_id << "\t" << str_Dep_St << "\t" << str_Arrival_St << "\t" << i_No_Tickets
                                 << "\t" << i_total << "\n";
                 cout << "\n\t\tRecord found & updated successfully!\n\n";
                 cout << "\n----------------------------------------------------------------------------------\n";
                 count01++;
+=======
+                new_ticket_no = i_No_Tickets - stoi(s4);
+                int n = CheckSeatAvailabilty(str_Dep_St, str_Arrival_St, new_ticket_no);
+                if (n == 1)
+                {
+                    reservationsOut << str_customer_id << "\t" << str_Dep_St << "\t" << str_Arrival_St << "\t" << i_No_Tickets
+                                    << "\t" << i_total << "\n";
+                    cout << "\n\t\tRecord found & updated!\n\n";
+                    cout << "\n-------------------------------------------------\n";
+                    count01++;
+                }
+>>>>>>> c12a1dbbd25d1be479953be52b9564374dffcf87
             }
+
             else
             {
                 reservationsOut << s1 << "\t" << s2 << "\t" << s3 << "\t" << s4 << "\t" << s5 << "\n";
@@ -201,15 +230,22 @@ inline void Reservations ::Deletes()
         cin >> str_customer_id;
         cout << "\n\nDepature station\n\n ";
         cin >> str_Dep_St;
+         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << "\n\n Arrival station\n\n ";
         cin >> str_Arrival_St;
+<<<<<<< HEAD
         cout << "\n\n--------------------------------------------------------------------------------\n\n";
+=======
+         cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "\n\n-------------------------------------------------\n\n";
+>>>>>>> c12a1dbbd25d1be479953be52b9564374dffcf87
         ResIn.open("Reservations.txt");
         ResOut.open("temp5.txt", ios ::app);
         while (ResIn >> customer_id >> dept >> arr >> nt >> tot)
         {
             if ((customer_id == str_customer_id) & (dept == str_Dep_St) & (arr == str_Arrival_St))
             {
+                int n = CheckSeatAvailabilty(str_Dep_St, str_Arrival_St, -nt);
             }
             else
             {
@@ -244,14 +280,15 @@ inline void Reservations ::Show(string customer_id, string Dept_St, string Arriv
     string deptime, arrtime;
     fstream time;
     time.open("Timetables.txt");
-    while(time >> s6 >> s7 >> s8 >> s9 >> s10)
+    while (time >> s6 >> s7 >> s8 >> s9 >> s10)
     {
-        if((s6 == Dept_St) & (s7 == Arrival_St))
+        if ((s6 == Dept_St) & (s7 == Arrival_St))
         {
             deptime = s9;
             arrtime = s10;
-        } 
+        }
     }
+<<<<<<< HEAD
     cout << "\n\n\t**************************************************************\n"
          << bold_on << "\t\t\t\t      " << UNDERLINE << "INDIAN ROADWAYS" << CLOSEUNDERLINE << bold_off << "\n\n"
          << "\t\tCustomer ID :" << customer_id << "\n\n"
@@ -264,6 +301,22 @@ inline void Reservations ::Show(string customer_id, string Dept_St, string Arriv
          << "\t\t\t---------------------------------\n"
          << bold_on<< "\n\t\t\t\tTotal Fare = " << total <<bold_off<< "\n"
          << "\n\t***************************************************************\n";
+=======
+    cout << "\n\n**************************************************************\n"
+         << bold_on << "\t\t\t      " << UNDERLINE << "INDIAN ROADWAYS" << CLOSEUNDERLINE << bold_off << "\n\n"
+         << "\tCustomer ID :" << customer_id << "\n\n"
+         << "\tDep. St. : "
+         << left << setw(20) << Dept_St << "\t"
+         << "Departure Time: " << deptime << "\n\n"
+         << "\tArrival St. : "
+         << left << setw(17) << Arrival_St << "\t"
+         << "Arrival Time: " << arrtime << "\n\n"
+         << "\tNo. of Tickets :" << No_Tickets << "\n\n"
+         << "\tCharge for one ticket : " << Charge << "\n\n"
+         << "\t\t---------------------------------\n"
+         << "\n\t\t\tTotal Fare = " << total << endl
+         << "\n***************************************************************\n";
+>>>>>>> c12a1dbbd25d1be479953be52b9564374dffcf87
 }
 
 inline void Reservations ::Show()
@@ -277,24 +330,27 @@ inline void Reservations ::Show()
     cout << "\n\n-----------------------------------------------------------------------------------\n\n";
     cout << "\n\n Depature station\n\n ";
     cin >> str_Dep_St;
+     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout << "\n\n Arrival station\n\n ";
     cin >> str_Arrival_St;
+     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     fstream read;
     read.open("Reservations.txt");
     fstream time;
     time.open("Timetables.txt");
-    while(time >> s6 >> s7 >> s8 >> s9 >> s10)
+    while (time >> s6 >> s7 >> s8 >> s9 >> s10)
     {
-        if((s6 == str_Dep_St) & (s7 == str_Arrival_St))
+        if ((s6 == str_Dep_St) & (s7 == str_Arrival_St))
         {
             deptime = s9;
             arrtime = s10;
-        } 
+        }
     }
     while (read >> s1 >> s2 >> s3 >> s4 >> s5)
     {
         if ((s1 == str_customer_id) & (s2 == str_Dep_St) & (s3 == str_Arrival_St))
         {
+<<<<<<< HEAD
             cout << "\n\n\t**********************************************************************\n"
                  << bold_on << "\t\t\t\t    " << UNDERLINE << "INDIAN ROADWAYS" << CLOSEUNDERLINE << bold_off << "\n\n"
                  << "\t\tCustomer ID :" << s1 << "\n\n"
@@ -306,6 +362,21 @@ inline void Reservations ::Show()
                  << "\t\t\t---------------------------------\n"
                  << bold_on<<"\n\t\t\t\tTotal Fare = " << s5 <<bold_off<< "\n"
                  << "\n\t***********************************************************************\n";
+=======
+            cout << "\n\n**************************************************************\n"
+                 << bold_on << "\t\t\t      " << UNDERLINE << "INDIAN ROADWAYS" << CLOSEUNDERLINE << bold_off << "\n\n"
+                 << "\tCustomer ID :" << s1 << "\n\n"
+                 << "\tDep. St. : "
+                 << left << setw(20) << s2 << "\t"
+                 << "Departure Time: " << deptime << "\n\n"
+                 << "\tArrival St. : "
+                 << left << setw(17) << s3 << "\t"
+                 << "Arrival Time: " << arrtime << "\n\n"
+                 << "\tNo. of Tickets :" << s4 << "\n\n"
+                 << "\t\t---------------------------------\n"
+                 << "\n\t\t\tTotal Fare = " << s5 << endl
+                 << "\n***************************************************************\n";
+>>>>>>> c12a1dbbd25d1be479953be52b9564374dffcf87
             cntr20++;
         }
     }
