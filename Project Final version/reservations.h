@@ -28,7 +28,7 @@ public:
     double CalculateFee(double, int);
     ~Reservations();
 };
-inline Reservations ::Reservations() {}
+ Reservations ::Reservations() {}
 
 // class Payments
 class Payments : public Reservations
@@ -39,7 +39,7 @@ public:
 };
 
 // payments - show
-inline void Payments ::Show() const
+ void Payments ::Show() const
 {
     fstream payments;
     payments.open("Payments.txt", ios::in);
@@ -56,9 +56,9 @@ inline void Payments ::Show() const
     }
     payments.close();
 }
-inline Payments ::~Payments() {}
+ Payments ::~Payments() {}
 // Reservations constructor
-inline Reservations ::Reservations(int customer_id, string DeptSt, string ArrivalSt, int NoTickets)
+ Reservations ::Reservations(int customer_id, string DeptSt, string ArrivalSt, int NoTickets)
 {
     int n;
     Reservations r2;
@@ -113,7 +113,7 @@ inline Reservations ::Reservations(int customer_id, string DeptSt, string Arriva
 }
 
 // modify Reservation function
-inline void Reservations ::SearchFile_and_Update(int log_customerid)
+ void Reservations ::SearchFile_and_Update(int log_customerid)
 {
     int new_ticket_no;
     count01 = 0;
@@ -198,7 +198,7 @@ inline void Reservations ::SearchFile_and_Update(int log_customerid)
 }
 
 //cancel Reservations0
-inline void Reservations ::Deletes(int log_customerid)
+ void Reservations ::Deletes(int log_customerid)
 {
     int cntr5 = 0;
     char confirmation;
@@ -257,7 +257,7 @@ inline void Reservations ::Deletes(int log_customerid)
 }
 
 // Reservations  Show
-inline void Reservations ::Show(int customer_id, string Dept_St, string Arrival_St, int No_Tickets, int Charge, int total)
+ void Reservations ::Show(int customer_id, string Dept_St, string Arrival_St, int No_Tickets, int Charge, int total)
 {
     string s6, s7, s8, s9, s10;
     string deptime, arrtime;
@@ -285,7 +285,7 @@ inline void Reservations ::Show(int customer_id, string Dept_St, string Arrival_
          << "\n\t***************************************************************\n";
 }
 
-inline void Reservations ::Show(int log_customerid)
+ void Reservations ::Show(int log_customerid)
 {
     int cntr20 = 0;
     int s1; 
@@ -339,10 +339,10 @@ inline void Reservations ::Show(int log_customerid)
 }
 
 // Reservations Destructor
-inline Reservations ::~Reservations() {}
+ Reservations ::~Reservations() {}
 
 // Payments Calculate
-inline double Reservations ::CalculateFee(double fee, int nt)
+ double Reservations ::CalculateFee(double fee, int nt)
 {
     i_total = nt * fee;
     return i_total;

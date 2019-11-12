@@ -28,10 +28,10 @@ public:
     void Deletes(int);
     ~Passenger();
 };
-inline Passenger :: ~Passenger(){}
+ Passenger :: ~Passenger(){}
 
 // Passenger constructor
-inline Passenger ::Passenger(string name, string customer_id, string City, string ContactNumber, string Username, string Password)
+ Passenger ::Passenger(string name, string customer_id, string City, string ContactNumber, string Username, string Password)
 {
     str_name = name;
     str_customer_id = customer_id;
@@ -47,7 +47,7 @@ inline Passenger ::Passenger(string name, string customer_id, string City, strin
 }
 
 // Delete record function
-inline void Passenger::Deletes(int log_customerid)
+ void Passenger::Deletes(int log_customerid)
 {
     int customer_id; 
     string name, city, username, password, cn;
@@ -86,7 +86,7 @@ inline void Passenger::Deletes(int log_customerid)
 } //end of function DeleteRecord
 
 // Search file and update
-inline void Passenger ::SearchFile_and_Update(int log_customerid)
+ void Passenger ::SearchFile_and_Update(int log_customerid)
 {
     count01 = 0;
     string name, city, username, password, cn;
@@ -150,7 +150,7 @@ inline void Passenger ::SearchFile_and_Update(int log_customerid)
 }
 
 // Login
-inline int Passenger ::Login()
+int Passenger ::Login()
 {
     long long x=0; //to detect correct username and password for login
     string username01, password01;
