@@ -23,9 +23,9 @@ protected:
 public:
     Passenger() {}
     Passenger(string name, string customer_id, string City, string ContactNumber, string Username, string Password);
-    bool Login();
-    void SearchFile_and_Update();
-    void Deletes();
+    int Login();
+    void SearchFile_and_Update(int);
+    void Deletes(int);
     ~Passenger();
 };
 inline Passenger :: ~Passenger(){}
@@ -47,18 +47,19 @@ inline Passenger ::Passenger(string name, string customer_id, string City, strin
 }
 
 // Delete record function
-inline void Passenger::Deletes()
+inline void Passenger::Deletes(int log_customerid)
 {
-    string customer_id, name, city, username, password, cn;
-    cout << "\n\nEnter your Customer ID to delete the record :\n\n";
-    cin >> str_customer_id;
+    int customer_id; 
+    string name, city, username, password, cn;
+    // cout << "\n\nEnter your Customer ID to delete the record :\n\n";
+    // cin >> str_customer_id;
     fstream deleteF;
     ofstream df;
     deleteF.open("Passenger.txt", ios::in);
     while (deleteF >> customer_id >> name >> city >> cn >> username >> password)
     {
         df.open("temp2.txt", ios ::out | ios :: app);
-        if (customer_id != str_customer_id)
+        if (customer_id != log_customerid)
         {
             df << customer_id << "\t" << name << "\t" << city << "\t"
                << cn << "\t" << username
@@ -85,20 +86,21 @@ inline void Passenger::Deletes()
 } //end of function DeleteRecord
 
 // Search file and update
-inline void Passenger ::SearchFile_and_Update()
+inline void Passenger ::SearchFile_and_Update(int log_customerid)
 {
     count01 = 0;
-    string customer_id, name, city, username, password, cn;
+    string name, city, username, password, cn;
+    int customer_id;
     cout << "\n\n--------------------------------------------------------------------------------\n\n";
-    cout << "\n\nEnter your Customer ID :\n\n";
-    cin >> str_customer_id;
+    // cout << "\n\nEnter your Customer ID :\n\n";
+    // cin >> str_customer_id;
     ifstream PassengerIn;
     ofstream writeFile;
     PassengerIn.open("Passenger.txt");
     while (PassengerIn >> customer_id >> name >> city >> cn >> username >> password)
     {
         writeFile.open("temp1.txt", ios ::app);
-        if (customer_id == str_customer_id)
+        if (customer_id == log_customerid)
         {
             cout << "\n\nRecord found!\n\n";
             cout << "\n\n--------------------------------------------------------------------------------\n\n";
@@ -120,7 +122,7 @@ inline void Passenger ::SearchFile_and_Update()
             cin >> str_UserName;
             cout << "\n\nNew Passenger : Password\n\n ";
             cin >> str_Password;
-            writeFile << str_customer_id << "\t" << str_name << "\t" << str_City << "\t"
+            writeFile << customer_id << "\t" << str_name << "\t" << str_City << "\t"
                       << str_ContactNumber << "\t" << str_UserName
                       << "\t" << str_Password << "\n";
             count01++;
@@ -148,7 +150,7 @@ inline void Passenger ::SearchFile_and_Update()
 }
 
 // Login
-inline bool Passenger ::Login()
+inline int Passenger ::Login()
 {
     long long x=0; //to detect correct username and password for login
     string username01, password01;
@@ -162,21 +164,24 @@ inline bool Passenger ::Login()
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     ifstream matchup;
     matchup.open("Passenger.txt", ios::in);
-    string s1, s2, s3, s4, s5, s6;
+    int s1, retype; 
+    string s2, s3, s4, s5, s6;
     while (matchup >> s1 >> s2 >> s3 >> s4 >> s5 >> s6)
     {
         if (username01==s5 && password01==s6)
         {
             x++;
+            retype = s1;
         }
-    }matchup.close(); //end of while
+    }
+    matchup.close(); //end of while
     if(x>0){
         cout << "\n\nLogged in Successfully!!\n\n";
-        return true;
+        return retype;
     }
     else{
         cout<< "\n\nLog in Failed!\n\n";
-        return false;
+        return 0;
     }
 }
 

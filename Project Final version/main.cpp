@@ -96,9 +96,10 @@ int main()
             case 2:
             {
                 Passenger P2;
-                if (P2.Login())
+                int n = P2.Login();
+                if (n)
                 {
-                    P2.SearchFile_and_Update();
+                    P2.SearchFile_and_Update(n);
                 }
                 goto subMenu;
             };
@@ -106,11 +107,12 @@ int main()
             case 3:
             {
                 Passenger P3;
-                if (!P3.Login())
+                int n = P3.Login();
+                if (!n)
                 {
                     goto subMenu;
                 }
-                P3.Deletes();
+                P3.Deletes(n);
                 goto subMenu;
             };
             break;
@@ -150,7 +152,8 @@ int main()
             case 1:
             {
                 Reservations R2;
-                if (!R2.Login())
+                int n = R2.Login();
+                if (!n)
                 {
                     cout << "Try Again!!" << endl;
                     goto subMenu2;
@@ -159,8 +162,8 @@ int main()
                 if (check == 'y')
                 {
                     Payments Pa1;
-                    cout << "\nPassenger Customer ID:\n\n";
-                    cin >> customer_id;
+                    // cout << "\nPassenger Customer ID:\n\n";
+                    // cin >> customer_id;
                     Pa1.Show();
                     string search1, search2;
                     cout << "\n\n Enter Your Depature station\n\n ";
@@ -171,7 +174,7 @@ int main()
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     cout << "\n\nNo. of Tickets\n\n ";
                     cin >> nt;
-                    Reservations R2(customer_id, DepSt, ArrSt, nt);
+                    Reservations R2(n, DepSt, ArrSt, nt);
                     goto mainMenu;
                 }
             };
@@ -179,11 +182,12 @@ int main()
             case 2:
             {
                 Reservations R3;
-                if (!R3.Login())
+                int n = R3.Login();
+                if (!n)
                 {
                     goto subMenu2;
                 }
-                R3.SearchFile_and_Update();
+                R3.SearchFile_and_Update(n);
                 cout << "Moving to Main Menu...\n\n";
                 goto subMenu2;
             };
@@ -191,11 +195,12 @@ int main()
             case 3:
             {
                 Reservations R4;
-                if (!R4.Login())
+                int n = R4.Login();
+                if (!n)
                 {
                     goto subMenu2;
                 }
-                R4.Deletes();
+                R4.Deletes(n);
                 cout << "Moving to the Main Menu...\n\n";
                 goto mainMenu;
             };
@@ -203,9 +208,9 @@ int main()
             case 4:
             {
                 Reservations myr;
-                myr.Login();
+                int n = myr.Login();
 
-                myr.Show();
+                myr.Show(n);
                 goto mainMenu;
             }
             break;
