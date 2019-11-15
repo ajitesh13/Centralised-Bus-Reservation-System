@@ -6,7 +6,7 @@
 - [x] timetable and payment details added
 - [x] remove account malfunctioning
 - [x] Make customer_id unique or find an alternate solution to keep the entries unique
-- [ ] add arrival and departure in timetable    
+- [x] add arrival and departure in timetable    
 
 ## To-do
-- [ ] Display passenger details after registration.
+- [x] Display passenger details after registration.

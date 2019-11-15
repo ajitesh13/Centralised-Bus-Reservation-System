@@ -5,7 +5,7 @@ using namespace std;
 class Seats
 {
 protected:
-    int i_SeatNo;
+    int seats;
 
 public:
     int CheckSeatAvailabilty(string DepSt, string ArrSt, int nt);
